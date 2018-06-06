@@ -1,0 +1,860 @@
+[
+  {
+    "filepath": "regression-test-issue-112.js",
+    "rev_bug": "bc7c28ce12e126131ecbc9614ce3a6108a0b1c3f",
+    "rev_fix": "da7e9d9871f68ef94bcf835ee6ba83db06448cf8",
+    "date_fix": "2015-05-28 20:49:55 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-113.js",
+    "rev_bug": "77df022468304d8f901a89baf559b9a0728071f4",
+    "rev_fix": "bc7c28ce12e126131ecbc9614ce3a6108a0b1c3f",
+    "date_fix": "2015-05-28 21:50:32 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-132.js",
+    "rev_bug": "d6fb76416a7b2d7e6ed9879ad335e32f9376b92d",
+    "rev_fix": "e4db5aa5396f98ca36350f8a72e32576e524868e",
+    "date_fix": "2015-06-02 16:39:25 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-115.js",
+    "rev_bug": "d6fb76416a7b2d7e6ed9879ad335e32f9376b92d",
+    "rev_fix": "e4db5aa5396f98ca36350f8a72e32576e524868e",
+    "date_fix": "2015-06-02 16:39:25 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-128.js",
+    "rev_bug": "8433df309734eef433624505969ec88380b845c4",
+    "rev_fix": "ac87616f05cb0e90292067d703b4eb862c607385",
+    "date_fix": "2015-06-02 17:06:43 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-121.js",
+    "rev_bug": "64522db9728d7bd214c048fcb3e01bcdcd9b76d7",
+    "rev_fix": "385b988e69ec0fc8a5b2de698544e8722f489b33",
+    "date_fix": "2015-06-05 15:28:41 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-122.js",
+    "rev_bug": "81d13b0676211a05b5b25c8e36f6649b1e312562",
+    "rev_fix": "0db82a56d259d9a49f80cd75d26e2576b31c6cde",
+    "date_fix": "2015-06-19 20:50:08 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-117.js",
+    "rev_bug": "611811678eb0bb9a47d79b098d367ba9a66311b0",
+    "rev_fix": "d1055f98e51341efd3a840772abbf1d7a7d89c2a",
+    "date_fix": "2015-06-19 21:16:20 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-116.js",
+    "rev_bug": "89a74499138ece92d03367d42266c430d426b67a",
+    "rev_fix": "a536073da4ee66a31258d004386dcf9ac350b7b4",
+    "date_fix": "2015-06-19 22:16:21 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-212.js",
+    "rev_bug": "a536073da4ee66a31258d004386dcf9ac350b7b4",
+    "rev_fix": "611811678eb0bb9a47d79b098d367ba9a66311b0",
+    "date_fix": "2015-06-19 22:24:19 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-156.js",
+    "rev_bug": "601f1eea58ea281578d8b71fef25da2ad60f013b",
+    "rev_fix": "f849cc6283698b2118e5a12b2bdb4d6fc02c962b",
+    "date_fix": "2015-06-24 21:39:14 +0300"
+  },
+  {
+    "filepath": "regression-test-issues-43-183.js",
+    "rev_bug": "4ff9e79b02eb4e2e26187ee533ac087eba0bfac8",
+    "rev_fix": "d7ecd4a467dd6c6b1ad16bd19d093fe9da3c520e",
+    "date_fix": "2015-06-25 00:09:58 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-164.js",
+    "rev_bug": "2aa04859ef04d08654f6e8839a61106c84b0c6cb",
+    "rev_fix": "7b90d54490f53eb501644b6c76ca28549411c88f",
+    "date_fix": "2015-06-29 19:01:47 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-260.js",
+    "rev_bug": "fd9ff8e3bdd243d386d02dbf26a3707994519c75",
+    "rev_fix": "2aa04859ef04d08654f6e8839a61106c84b0c6cb",
+    "date_fix": "2015-06-29 22:58:45 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-265.js",
+    "rev_bug": "fd9ff8e3bdd243d386d02dbf26a3707994519c75",
+    "rev_fix": "2aa04859ef04d08654f6e8839a61106c84b0c6cb",
+    "date_fix": "2015-06-29 22:58:45 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-264.js",
+    "rev_bug": "fd9ff8e3bdd243d386d02dbf26a3707994519c75",
+    "rev_fix": "2aa04859ef04d08654f6e8839a61106c84b0c6cb",
+    "date_fix": "2015-06-29 22:58:45 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-261.js",
+    "rev_bug": "fd9ff8e3bdd243d386d02dbf26a3707994519c75",
+    "rev_fix": "2aa04859ef04d08654f6e8839a61106c84b0c6cb",
+    "date_fix": "2015-06-29 22:58:45 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-267.js",
+    "rev_bug": "fd9ff8e3bdd243d386d02dbf26a3707994519c75",
+    "rev_fix": "2aa04859ef04d08654f6e8839a61106c84b0c6cb",
+    "date_fix": "2015-06-29 22:58:45 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-263.js",
+    "rev_bug": "fd9ff8e3bdd243d386d02dbf26a3707994519c75",
+    "rev_fix": "2aa04859ef04d08654f6e8839a61106c84b0c6cb",
+    "date_fix": "2015-06-29 22:58:45 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-262.js",
+    "rev_bug": "fd9ff8e3bdd243d386d02dbf26a3707994519c75",
+    "rev_fix": "2aa04859ef04d08654f6e8839a61106c84b0c6cb",
+    "date_fix": "2015-06-29 22:58:45 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-266.js",
+    "rev_bug": "fd9ff8e3bdd243d386d02dbf26a3707994519c75",
+    "rev_fix": "2aa04859ef04d08654f6e8839a61106c84b0c6cb",
+    "date_fix": "2015-06-29 22:58:45 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-114.js",
+    "rev_bug": "69fe6199c0b87a5372602ec31a2e6c059b3711d1",
+    "rev_fix": "0787d76b627cbb79646b01812e68ef79fd98d4c3",
+    "date_fix": "2015-07-01 17:20:23 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-129.js",
+    "rev_bug": "e8659f373cd225fb5720bb7d9d39e35cc43aa523",
+    "rev_fix": "69fe6199c0b87a5372602ec31a2e6c059b3711d1",
+    "date_fix": "2015-07-01 19:59:33 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-195.js",
+    "rev_bug": "93e3cb13ddbd19cd3c74a6fe2bf2334d0f85ae53",
+    "rev_fix": "c9bbec768351f0eb32230f8b5c4c5988ce9e2068",
+    "date_fix": "2015-07-03 19:17:55 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-285.js",
+    "rev_bug": "47cd42ecc5a7f4205736663916ff1acfd4f0efbe",
+    "rev_fix": "e9a5b34d1d21f2d3543ce656bdb20ef5095eaec7",
+    "date_fix": "2015-07-06 12:45:05 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-255.js",
+    "rev_bug": "dbf3708255217f360a72c02fadb185a76e5fbf67",
+    "rev_fix": "6e8f7b6e5969ae1684e78eccf02aac8b194b6c2c",
+    "date_fix": "2015-07-09 11:41:17 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-245.js",
+    "rev_bug": "9b24d8fd7a7cecbad1847820e2f26527814041ba",
+    "rev_fix": "122e5c47c90aa996d4ac362ae13d78f2e937e4ff",
+    "date_fix": "2015-07-10 10:10:32 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-130.js",
+    "rev_bug": "710a18d6affeb07e3466558dabdac49c7cab0575",
+    "rev_fix": "8aa2571699e006f57f35d8c05a24d2205c0328cd",
+    "date_fix": "2015-07-10 19:42:09 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-279.js",
+    "rev_bug": "d2457b1fc61c8eeced239662e9eede5752791dd8",
+    "rev_fix": "db9b74a1147a3698b3b628bc86fadd4a20372ed5",
+    "date_fix": "2015-07-14 13:28:32 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-341.js",
+    "rev_bug": "1195c197e8272fc5e7ce79763338787f55286adf",
+    "rev_fix": "92bf7859af97481384f652dd1546ab4e6c6334d0",
+    "date_fix": "2015-07-14 16:29:52 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-381.js",
+    "rev_bug": "352e8f5c04b2d9595842b435360b1c927a3e3b63",
+    "rev_fix": "d11dfc570341898d1d1efcb9497a70116ed13f2d",
+    "date_fix": "2015-07-15 22:49:08 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-440.js",
+    "rev_bug": "31894da098a490c9a617f465cfcbcdb4ef16403c",
+    "rev_fix": "6ade8dfebb2b57c6a05797c9b3697893e0e0c258",
+    "date_fix": "2015-07-21 16:23:35 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-257.js",
+    "rev_bug": "7a3636b5ce63d1fa017bbd9b1f8fbcabe3fcb186",
+    "rev_fix": "57336909cbcaeca18687d6e8d2d8bd4a1e97d09e",
+    "date_fix": "2015-08-03 14:52:56 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-316.js",
+    "rev_bug": "97aed75a46c3db488b1bbccc88f1e98bb9eb8964",
+    "rev_fix": "2d80456eb71fa9be149c212ec373d1005f759b85",
+    "date_fix": "2015-08-05 09:34:10 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-312.js",
+    "rev_bug": "2d80456eb71fa9be149c212ec373d1005f759b85",
+    "rev_fix": "a19dd0523e5e48f7496fe60caa3f195193f638d2",
+    "date_fix": "2015-08-06 09:50:44 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-612.js",
+    "rev_bug": "0d6568db1859047e269071d95d8275a8cc002e25",
+    "rev_fix": "98fc4098e8b352241587c0e4f818d0d9d82a5b76",
+    "date_fix": "2015-09-15 17:28:26 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-566.js",
+    "rev_bug": "6f7746050984787b5e578bbdb17a70c81089f696",
+    "rev_fix": "08c618e8c5d9946cab74a85c51757573898e34ec",
+    "date_fix": "2015-09-16 17:36:00 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-563.js",
+    "rev_bug": "86480f6168fd47113fdf13a1cea15157eb9b4126",
+    "rev_fix": "448984dd74b0d489816aee0033aa53d59eea0ce7",
+    "date_fix": "2015-10-08 16:47:35 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-652.js",
+    "rev_bug": "86480f6168fd47113fdf13a1cea15157eb9b4126",
+    "rev_fix": "448984dd74b0d489816aee0033aa53d59eea0ce7",
+    "date_fix": "2015-10-08 16:47:35 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-655.js",
+    "rev_bug": "86480f6168fd47113fdf13a1cea15157eb9b4126",
+    "rev_fix": "448984dd74b0d489816aee0033aa53d59eea0ce7",
+    "date_fix": "2015-10-08 16:47:35 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-654.js",
+    "rev_bug": "1e2dfc73f577bdea0f46ef9d96ecc295cab7188b",
+    "rev_fix": "fcebf654cc4f321d0ccbd03d7f178bee3284bede",
+    "date_fix": "2015-10-13 20:01:26 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-653.js",
+    "rev_bug": "1e2dfc73f577bdea0f46ef9d96ecc295cab7188b",
+    "rev_fix": "fcebf654cc4f321d0ccbd03d7f178bee3284bede",
+    "date_fix": "2015-10-13 20:01:26 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-667.js",
+    "rev_bug": "3e31931537981bbdaceb093c794655575fe146aa",
+    "rev_fix": "906558b8e94aa9118971188af9880eb47ff9b791",
+    "date_fix": "2015-10-16 17:15:21 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-339.js",
+    "rev_bug": "448984dd74b0d489816aee0033aa53d59eea0ce7",
+    "rev_fix": "31ae0977f684ad9ad4c62b585c8615df7ea02b7a",
+    "date_fix": "2015-10-19 15:51:55 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-642.js",
+    "rev_bug": "579b1edaa541f07a8e68ef1f0f7630029865df32",
+    "rev_fix": "947dc4cab273cc1e66e6d2b8085446bc4df3a1ad",
+    "date_fix": "2015-10-20 16:26:51 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-669.js",
+    "rev_bug": "4aaa0ace1749ab490cdf6c0885719d28f01b8112",
+    "rev_fix": "3e31931537981bbdaceb093c794655575fe146aa",
+    "date_fix": "2015-10-20 20:02:43 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-614.js",
+    "rev_bug": "eaca37c4c93eaf9291b005e63c4fef79384bb126",
+    "rev_fix": "94cb6aec26c21b608e54b8e6efd854943a21ba1b",
+    "date_fix": "2015-10-21 13:25:37 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-689.js",
+    "rev_bug": "f2c54fbe39451c18b9beea04f147de960f3b840e",
+    "rev_fix": "04ca231fa4a75dda17c1e5cdd4c59b39ac8d0fce",
+    "date_fix": "2015-10-28 21:30:48 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-686.js",
+    "rev_bug": "3025bd17509b30b2bbd4ddb141b8ecf7cdf009b6",
+    "rev_fix": "f2ced3d91caf51504bcbcceabe35e1355a2cffc0",
+    "date_fix": "2015-10-29 15:00:39 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-646.js",
+    "rev_bug": "b1de93abd6079750cbc79eac541669ee7866edd0",
+    "rev_fix": "50d124bfc32e399c2013b4e3e79265d6b98d073c",
+    "date_fix": "2015-11-03 19:14:19 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-644.js",
+    "rev_bug": "b1de93abd6079750cbc79eac541669ee7866edd0",
+    "rev_fix": "50d124bfc32e399c2013b4e3e79265d6b98d073c",
+    "date_fix": "2015-11-03 19:14:19 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-280.js",
+    "rev_bug": "b1de93abd6079750cbc79eac541669ee7866edd0",
+    "rev_fix": "50d124bfc32e399c2013b4e3e79265d6b98d073c",
+    "date_fix": "2015-11-03 19:14:19 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-737.js",
+    "rev_bug": "b1de93abd6079750cbc79eac541669ee7866edd0",
+    "rev_fix": "50d124bfc32e399c2013b4e3e79265d6b98d073c",
+    "date_fix": "2015-11-03 19:14:19 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-703.js",
+    "rev_bug": "7022aa26b0ef3a0610b5f80255bc95d8d29027a7",
+    "rev_fix": "140982e90083c6e59cf162e4748865857afba995",
+    "date_fix": "2015-11-04 17:49:25 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-340.js",
+    "rev_bug": "f17f785b6ec0c71c2ef37e4e80a98aff1eff0963",
+    "rev_fix": "e80cc3592cbdd96109d5b0b3e1a3ea3fa75cc4a8",
+    "date_fix": "2015-11-19 14:36:59 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-281.js",
+    "rev_bug": "f17f785b6ec0c71c2ef37e4e80a98aff1eff0963",
+    "rev_fix": "e80cc3592cbdd96109d5b0b3e1a3ea3fa75cc4a8",
+    "date_fix": "2015-11-19 14:36:59 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-541.js",
+    "rev_bug": "f17f785b6ec0c71c2ef37e4e80a98aff1eff0963",
+    "rev_fix": "e80cc3592cbdd96109d5b0b3e1a3ea3fa75cc4a8",
+    "date_fix": "2015-11-19 14:36:59 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-276.js",
+    "rev_bug": "f17f785b6ec0c71c2ef37e4e80a98aff1eff0963",
+    "rev_fix": "e80cc3592cbdd96109d5b0b3e1a3ea3fa75cc4a8",
+    "date_fix": "2015-11-19 14:36:59 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-359.js",
+    "rev_bug": "f17f785b6ec0c71c2ef37e4e80a98aff1eff0963",
+    "rev_fix": "e80cc3592cbdd96109d5b0b3e1a3ea3fa75cc4a8",
+    "date_fix": "2015-11-19 14:36:59 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-613.js",
+    "rev_bug": "f17f785b6ec0c71c2ef37e4e80a98aff1eff0963",
+    "rev_fix": "e80cc3592cbdd96109d5b0b3e1a3ea3fa75cc4a8",
+    "date_fix": "2015-11-19 14:36:59 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-639.js",
+    "rev_bug": "f17f785b6ec0c71c2ef37e4e80a98aff1eff0963",
+    "rev_fix": "e80cc3592cbdd96109d5b0b3e1a3ea3fa75cc4a8",
+    "date_fix": "2015-11-19 14:36:59 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-274.js",
+    "rev_bug": "f17f785b6ec0c71c2ef37e4e80a98aff1eff0963",
+    "rev_fix": "e80cc3592cbdd96109d5b0b3e1a3ea3fa75cc4a8",
+    "date_fix": "2015-11-19 14:36:59 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-429.js",
+    "rev_bug": "f17f785b6ec0c71c2ef37e4e80a98aff1eff0963",
+    "rev_fix": "e80cc3592cbdd96109d5b0b3e1a3ea3fa75cc4a8",
+    "date_fix": "2015-11-19 14:36:59 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-640.js",
+    "rev_bug": "f17f785b6ec0c71c2ef37e4e80a98aff1eff0963",
+    "rev_fix": "e80cc3592cbdd96109d5b0b3e1a3ea3fa75cc4a8",
+    "date_fix": "2015-11-19 14:36:59 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-453.js",
+    "rev_bug": "f17f785b6ec0c71c2ef37e4e80a98aff1eff0963",
+    "rev_fix": "e80cc3592cbdd96109d5b0b3e1a3ea3fa75cc4a8",
+    "date_fix": "2015-11-19 14:36:59 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-725.js",
+    "rev_bug": "17f7bad242e4dcf24509aad5cebc64430b7bfa9f",
+    "rev_fix": "f20db76dfb59e557b0a06f2dc4db05fc2b8ba639",
+    "date_fix": "2015-11-20 18:19:20 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-745.js",
+    "rev_bug": "ab68d093e88598beaa4d10b8160d7bcca33f9d33",
+    "rev_fix": "ce3b785c8303cc6a8763d3f649adbdf0b7c198ff",
+    "date_fix": "2015-11-25 19:22:42 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-736.js",
+    "rev_bug": "fe157301a2f2d6df45e160367d6357a34afa606e",
+    "rev_fix": "17f7bad242e4dcf24509aad5cebc64430b7bfa9f",
+    "date_fix": "2015-11-26 16:29:41 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-741.js",
+    "rev_bug": "cc60b0b3a2d3754a4ca2071111863ae59260e327",
+    "rev_fix": "7868b0ae685eb67a4ce478dc9e6fd2b4c3ebb0ad",
+    "date_fix": "2015-12-05 17:14:28 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-798.js",
+    "rev_bug": "50d124bfc32e399c2013b4e3e79265d6b98d073c",
+    "rev_fix": "f932b7d48cf19d01a683c905b59d8daf3571c6c7",
+    "date_fix": "2016-01-02 19:52:26 +0300"
+  },
+  {
+    "filepath": "regression-test-issue-680.js",
+    "rev_bug": "0f378281ba66460a3105bcbe85ab8aeaf2cd0dc7",
+    "rev_fix": "ca0141284894ebd838fe5a293c5f3796ef0dc102",
+    "date_fix": "2016-02-08 12:21:16 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-738.js",
+    "rev_bug": "0f378281ba66460a3105bcbe85ab8aeaf2cd0dc7",
+    "rev_fix": "ca0141284894ebd838fe5a293c5f3796ef0dc102",
+    "date_fix": "2016-02-08 12:21:16 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-781.js",
+    "rev_bug": "0f378281ba66460a3105bcbe85ab8aeaf2cd0dc7",
+    "rev_fix": "ca0141284894ebd838fe5a293c5f3796ef0dc102",
+    "date_fix": "2016-02-08 12:21:16 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-354.js",
+    "rev_bug": "0f378281ba66460a3105bcbe85ab8aeaf2cd0dc7",
+    "rev_fix": "ca0141284894ebd838fe5a293c5f3796ef0dc102",
+    "date_fix": "2016-02-08 12:21:16 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-739.js",
+    "rev_bug": "0f378281ba66460a3105bcbe85ab8aeaf2cd0dc7",
+    "rev_fix": "ca0141284894ebd838fe5a293c5f3796ef0dc102",
+    "date_fix": "2016-02-08 12:21:16 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-785.js",
+    "rev_bug": "0f378281ba66460a3105bcbe85ab8aeaf2cd0dc7",
+    "rev_fix": "ca0141284894ebd838fe5a293c5f3796ef0dc102",
+    "date_fix": "2016-02-08 12:21:16 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-743.js",
+    "rev_bug": "0f378281ba66460a3105bcbe85ab8aeaf2cd0dc7",
+    "rev_fix": "ca0141284894ebd838fe5a293c5f3796ef0dc102",
+    "date_fix": "2016-02-08 12:21:16 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-447.js",
+    "rev_bug": "0f378281ba66460a3105bcbe85ab8aeaf2cd0dc7",
+    "rev_fix": "ca0141284894ebd838fe5a293c5f3796ef0dc102",
+    "date_fix": "2016-02-08 12:21:16 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-123.js",
+    "rev_bug": "0f378281ba66460a3105bcbe85ab8aeaf2cd0dc7",
+    "rev_fix": "ca0141284894ebd838fe5a293c5f3796ef0dc102",
+    "date_fix": "2016-02-08 12:21:16 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-786.js",
+    "rev_bug": "0f378281ba66460a3105bcbe85ab8aeaf2cd0dc7",
+    "rev_fix": "ca0141284894ebd838fe5a293c5f3796ef0dc102",
+    "date_fix": "2016-02-08 12:21:16 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-787.js",
+    "rev_bug": "4a5a8cbf726cc0c4a22410ef189d2889753e2e34",
+    "rev_fix": "0f378281ba66460a3105bcbe85ab8aeaf2cd0dc7",
+    "date_fix": "2016-02-08 14:12:37 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-747.js",
+    "rev_bug": "d420be3fdf6da5c3b35521fa5ef4d5c4e7eea73f",
+    "rev_fix": "6b8332e63191778bbd6205536659999e66d5929b",
+    "date_fix": "2016-02-08 15:49:34 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-782.js",
+    "rev_bug": "433f0705f7b78a73ec7a3b86b54e8b6625f785a3",
+    "rev_fix": "d420be3fdf6da5c3b35521fa5ef4d5c4e7eea73f",
+    "date_fix": "2016-02-09 09:21:02 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-783.js",
+    "rev_bug": "6b8332e63191778bbd6205536659999e66d5929b",
+    "rev_fix": "094b182e96c898d5b752346a0febfd5faf76d60c",
+    "date_fix": "2016-02-09 10:03:00 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-641.js",
+    "rev_bug": "ef1252e29e5777ed8010e7a02a0c4c1c62530201",
+    "rev_fix": "9a6bdef228f47aaec6f72cbaa06507e001f8d451",
+    "date_fix": "2016-02-10 08:31:23 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-962.js",
+    "rev_bug": "69291e2dc44038bfc80e4389f4ccd92f8ce90cd2",
+    "rev_fix": "57db5ca918c33a9330d91a3fe5d69a74d9a19a64",
+    "date_fix": "2016-03-20 00:00:17 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-1072.js",
+    "rev_bug": "e4b0d81fbf8d4aef33bbb3fca60876e86921f98b",
+    "rev_fix": "be273d874fafc7db88e2330b7372e5f0da9b3172",
+    "date_fix": "2016-05-24 02:17:05 -0700"
+  },
+  {
+    "filepath": "regression-test-issue-1071.js",
+    "rev_bug": "372a2bb40b031e796f9d9a0214ef23b74a4e1293",
+    "rev_fix": "1c43e5b02b9d1e39572a081667752bc06e3802a4",
+    "date_fix": "2016-06-15 10:34:37 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-1054.js",
+    "rev_bug": "378d7f78ca4b93b93a1bd5243dd3ec2b08276dba",
+    "rev_fix": "7a3ed2650d5398f7eecf22343480e615d7f795f3",
+    "date_fix": "2016-06-16 13:16:35 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-1083.js",
+    "rev_bug": "97be8bfbc83c2331bb7981e68918fe94d0b4f7b1",
+    "rev_fix": "cea3a142ac2b91871172f949bec95e4cc3025c7e",
+    "date_fix": "2016-07-08 14:30:50 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-380.js",
+    "rev_bug": "97be8bfbc83c2331bb7981e68918fe94d0b4f7b1",
+    "rev_fix": "cea3a142ac2b91871172f949bec95e4cc3025c7e",
+    "date_fix": "2016-07-08 14:30:50 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1065.js",
+    "rev_bug": "97be8bfbc83c2331bb7981e68918fe94d0b4f7b1",
+    "rev_fix": "cea3a142ac2b91871172f949bec95e4cc3025c7e",
+    "date_fix": "2016-07-08 14:30:50 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1080.js",
+    "rev_bug": "97be8bfbc83c2331bb7981e68918fe94d0b4f7b1",
+    "rev_fix": "cea3a142ac2b91871172f949bec95e4cc3025c7e",
+    "date_fix": "2016-07-08 14:30:50 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1075.js",
+    "rev_bug": "97be8bfbc83c2331bb7981e68918fe94d0b4f7b1",
+    "rev_fix": "cea3a142ac2b91871172f949bec95e4cc3025c7e",
+    "date_fix": "2016-07-08 14:30:50 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1073.js",
+    "rev_bug": "97be8bfbc83c2331bb7981e68918fe94d0b4f7b1",
+    "rev_fix": "cea3a142ac2b91871172f949bec95e4cc3025c7e",
+    "date_fix": "2016-07-08 14:30:50 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1081.js",
+    "rev_bug": "97be8bfbc83c2331bb7981e68918fe94d0b4f7b1",
+    "rev_fix": "cea3a142ac2b91871172f949bec95e4cc3025c7e",
+    "date_fix": "2016-07-08 14:30:50 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1074.js",
+    "rev_bug": "97be8bfbc83c2331bb7981e68918fe94d0b4f7b1",
+    "rev_fix": "cea3a142ac2b91871172f949bec95e4cc3025c7e",
+    "date_fix": "2016-07-08 14:30:50 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1082.js",
+    "rev_bug": "97be8bfbc83c2331bb7981e68918fe94d0b4f7b1",
+    "rev_fix": "cea3a142ac2b91871172f949bec95e4cc3025c7e",
+    "date_fix": "2016-07-08 14:30:50 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1079.js",
+    "rev_bug": "3a78d308974463f2c8748ebadb083a8d11d03c19",
+    "rev_fix": "9fcf6597f6942146ddaac28f86e034c54168051d",
+    "date_fix": "2016-07-18 16:01:22 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1078.js",
+    "rev_bug": "314e74f8ce6393a99f2f751fa3170beb981e6ccf",
+    "rev_fix": "efdf91a0d6bb10d27a1ed80394ead3d59438d141",
+    "date_fix": "2016-08-22 15:41:28 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-1284.js",
+    "rev_bug": "db176aa01d2185ccc2d1221d41f6747c72332851",
+    "rev_fix": "98cec9afb8c75b867e66397bf344b0f528f59141",
+    "date_fix": "2016-08-24 23:06:40 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-1282.js",
+    "rev_bug": "f2bae401af7ccaefe2ac6398591b61dee043c074",
+    "rev_fix": "db176aa01d2185ccc2d1221d41f6747c72332851",
+    "date_fix": "2016-08-24 23:07:25 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-1286.js",
+    "rev_bug": "98cec9afb8c75b867e66397bf344b0f528f59141",
+    "rev_fix": "c6e68ce167479ed5d04f18010511af2a429c8a8c",
+    "date_fix": "2016-08-25 17:58:16 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-1292.js",
+    "rev_bug": "260b96785329814a0cf1bd8249c915977cf17fe9",
+    "rev_fix": "2c78ee7f54f73d8f76fdc17a249c372d885c2345",
+    "date_fix": "2016-08-29 18:02:34 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-1300.js",
+    "rev_bug": "a6d2e792f862482a3da23433117b21ed119e8d93",
+    "rev_fix": "9f65b7601336430600bd063c5e3288f5323227f3",
+    "date_fix": "2016-08-30 12:50:12 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-1076.js",
+    "rev_bug": "1ab45a1a2fb2fe38b3c85701954d9c01a162df58",
+    "rev_fix": "260b96785329814a0cf1bd8249c915977cf17fe9",
+    "date_fix": "2016-08-31 19:18:45 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-1309.js",
+    "rev_bug": "17d1d37cca3a2c9483b15453be1190a557c468ad",
+    "rev_fix": "bfbe1821b59db5234c4960d5e3ab785158e8b175",
+    "date_fix": "2016-08-31 20:25:15 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-1387.js",
+    "rev_bug": "28b4d3cb586619f0f2a9a2dab2f69a96b4635f2e",
+    "rev_fix": "922782109be006d043621131495cf893183e5a56",
+    "date_fix": "2016-10-20 09:13:11 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1389.js",
+    "rev_bug": "ec4f4e6fdbff5c6465d717c3625723a09523f94f",
+    "rev_fix": "ff6b3a9b027a241c75f2bed54d80f72f58bf3c2c",
+    "date_fix": "2016-10-28 14:56:13 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1386.js",
+    "rev_bug": "4ef3c0caa8fa355b50b55c6fa2509ab79eba39d7",
+    "rev_fix": "bed094f74f0f922b1061e0e80c301c330e242ffd",
+    "date_fix": "2016-12-05 17:58:36 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-1533.js",
+    "rev_bug": "6c708102d3da5a6984322c7cb4cf518791cb5137",
+    "rev_fix": "8b5d645df65e54a4ffe4e37a323d1eb68a45a79c",
+    "date_fix": "2017-01-19 11:34:24 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-1546.js",
+    "rev_bug": "a43186db415ab220a3750bf3ca6703cecdcd4e85",
+    "rev_fix": "589f2dec92c9202ed4d9692204066e95b351af8a",
+    "date_fix": "2017-02-03 15:16:49 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-1555.js",
+    "rev_bug": "589f2dec92c9202ed4d9692204066e95b351af8a",
+    "rev_fix": "caf930828868c661de2e46eeff25d3377c167a22",
+    "date_fix": "2017-02-06 10:19:31 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-1556.js",
+    "rev_bug": "caf930828868c661de2e46eeff25d3377c167a22",
+    "rev_fix": "cba165f8e601306d5104ce110825ada82595d17c",
+    "date_fix": "2017-02-06 15:50:43 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-1552.js",
+    "rev_bug": "638b75313595461cc0caaa02cc97a708421c6920",
+    "rev_fix": "be720b22381bcf2bff202e87091a0d43e7c50131",
+    "date_fix": "2017-02-10 08:10:20 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-1547.js",
+    "rev_bug": "df4064c18ef600adcf9bc20918b6f6bf76dabc51",
+    "rev_fix": "3de72af7124202c2d9d822ca824e4b510640be73",
+    "date_fix": "2017-02-27 11:19:29 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-1636.js",
+    "rev_bug": "f8dd54abb64f9520383c09478f3b74cd450365d4",
+    "rev_fix": "b140158104064ef082ddb58052f8c7c7cee9675c",
+    "date_fix": "2017-03-09 15:03:46 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-1641.js",
+    "rev_bug": "ed32ba148c167d9ca7c7a4bdb0a2ee9bd372e337",
+    "rev_fix": "1b4426fd2acd99dcfefc0b5f4e91079c30de5fe7",
+    "date_fix": "2017-03-14 10:01:22 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-1657.js",
+    "rev_bug": "d77d4ae1c60f86e3b78ed5a69e30bf9cf5f29ab7",
+    "rev_fix": "edadc53defe09dca4cbbce7366d98d4218d662f7",
+    "date_fix": "2017-03-16 17:03:42 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-1621.js",
+    "rev_bug": "a5b90ed8587d61c12e081dd977b660d3bbb60faa",
+    "rev_fix": "1aec439869004bf415b1cd7203baf97cfd9274b5",
+    "date_fix": "2017-04-03 13:05:29 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1829.js",
+    "rev_bug": "833796a20ff1effdaf90369f30914e8750efcf56",
+    "rev_fix": "c6d890ee135b8ba4c627a577679cee17104fe888",
+    "date_fix": "2017-05-19 14:49:38 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1830.js",
+    "rev_bug": "04f3bf62b0d2eddbcebed4a415b821d1aae3b7d0",
+    "rev_fix": "a504fd0333e11459497735f3cef5362ef5eeb575",
+    "date_fix": "2017-05-22 13:01:22 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1833.js",
+    "rev_bug": "a504fd0333e11459497735f3cef5362ef5eeb575",
+    "rev_fix": "e58f2880df608652aff7fd35c45b242467ec0e79",
+    "date_fix": "2017-05-22 13:17:08 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1855.js",
+    "rev_bug": "631e9f9f809335779be8bd159d19db4d87e4516c",
+    "rev_fix": "ae60ff0aa31b838034f18dd2ef179a3e154929fc",
+    "date_fix": "2017-05-30 17:57:32 +0900"
+  },
+  {
+    "filepath": "regression-test-issue-1917.js",
+    "rev_bug": "ce1d5552884040072d3b98af2bb44552a876ae00",
+    "rev_fix": "d75710cf27ecbe9ead2e6a7768e17bc7ffd3f765",
+    "date_fix": "2017-07-20 10:26:51 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1934.js",
+    "rev_bug": "66b072d5aeea380350b993f14edbf5af14a00dc9",
+    "rev_fix": "a3885be6ce3e11b6e03b3fcb59894fff6590a7bb",
+    "date_fix": "2017-08-02 08:19:48 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1974.js",
+    "rev_bug": "5d18ac8f0c82394add281b0e53503ebd24d4bef9",
+    "rev_fix": "e62b5b601bc1caa3e4d8172824988536ed6138f3",
+    "date_fix": "2017-08-29 15:26:30 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1972.js",
+    "rev_bug": "733f0ceea02b53e19f963b59f37c6c2d266221cf",
+    "rev_fix": "0ef2418e5ed9a6bcb4b403b7fe35070b355a6057",
+    "date_fix": "2017-08-29 16:52:46 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1947.js",
+    "rev_bug": "7ccbe97b7979e106547d0ea72391edbb632e2143",
+    "rev_fix": "a51def40e7632d9cc3a7ad0cb5ec077437553ecd",
+    "date_fix": "2017-08-30 12:20:13 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1970.js",
+    "rev_bug": "0ef2418e5ed9a6bcb4b403b7fe35070b355a6057",
+    "rev_fix": "ce187049e98c1cba3f6f57719bf151d24546857a",
+    "date_fix": "2017-09-04 10:25:19 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1990.js",
+    "rev_bug": "30867e27e0862e2d3dd552e1ab7da0f761deaccd",
+    "rev_fix": "15ee7bc0361125cccfc21e96fced13141d303135",
+    "date_fix": "2017-09-20 11:54:03 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-1973.js",
+    "rev_bug": "0bc4bb056d91aa3cfe995c5b6a883038a3bb8bd3",
+    "rev_fix": "6dae81565c0f48a9466bb52d4bc46496a22ba93d",
+    "date_fix": "2017-10-27 12:32:29 +0200"
+  },
+  {
+    "filepath": "regression-test-issue-2008.js",
+    "rev_bug": "0ee750903073ede29c1610f2fd00d6cda83e8c39",
+    "rev_fix": "60bf613c0732cc6238834a95ee7b6b8b6022197e",
+    "date_fix": "2017-10-30 14:53:22 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-2073.js",
+    "rev_bug": "519ba8eb6cc66be26ff769a75cb7ebfe32826460",
+    "rev_fix": "7e51423ca7cdc18898414dfa0926d8b4f5632cab",
+    "date_fix": "2017-11-09 21:12:29 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-1993.js",
+    "rev_bug": "1d2a686532a9774c3a13df9b3626e91d105d5882",
+    "rev_fix": "5d2000c95431a3c34f0c55794b93ebe223b36f7a",
+    "date_fix": "2017-11-10 15:13:08 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-2108.js",
+    "rev_bug": "6c06a309c13bfdbd48504bf0512618206cebca6d",
+    "rev_fix": "1dedc1b630ed66b22d4a6a6faf741c2f71807b02",
+    "date_fix": "2017-11-17 20:00:45 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-2105.js",
+    "rev_bug": "1ed886b8729acbf838e3f33dedfdaac611f5d1e7",
+    "rev_fix": "a1df9c14209633624117e66c01ad0dfcc10cca3c",
+    "date_fix": "2017-11-23 13:48:26 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-2178.js",
+    "rev_bug": "918eb22a019e7d888c37e85798faba6ed3e0e9cf",
+    "rev_fix": "607e6058442b10dda72094a21eaba506ef7f43b1",
+    "date_fix": "2018-01-31 09:27:32 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-2182.js",
+    "rev_bug": "06ebfc52ed2358552267fd175a422a7563aa424b",
+    "rev_fix": "36051ec92bb2e0ec2f455fba9290b79e60902e07",
+    "date_fix": "2018-02-01 15:09:53 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-2200.js",
+    "rev_bug": "d7991ae54c42f7a994a5da1ef1909989857014b4",
+    "rev_fix": "3c57698ed8a80c276b163390721aa1269fb75169",
+    "date_fix": "2018-02-16 09:02:03 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-2198.js",
+    "rev_bug": "c4b61db57a872de756e360c0f81b34badb926270",
+    "rev_fix": "6fce323fa5be3064bbcf8abe581a4b3bd4f1bd01",
+    "date_fix": "2018-02-19 08:57:45 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-2204.js",
+    "rev_bug": "c4b61db57a872de756e360c0f81b34badb926270",
+    "rev_fix": "6fce323fa5be3064bbcf8abe581a4b3bd4f1bd01",
+    "date_fix": "2018-02-19 08:57:45 +0100"
+  },
+  {
+    "filepath": "regression-test-issue-2272.js",
+    "rev_bug": "cb40106693c6444fc9924e2e3eb22a5c3c83e67c",
+    "rev_fix": "46309b150221944a07b2e49fab95817d853df3e4",
+    "date_fix": "2018-04-09 13:27:16 +0200"
+  }
+]
