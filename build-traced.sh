@@ -26,7 +26,8 @@ fi
 
 gcc -c -o $JERRYSRCDIR/tracer.o tracer.c && \
 tools/build.py --clean --debug --builddir $JERRYBLDDIR \
-    --jerry-libc=OFF --jerry-libm=OFF --jerry-ext=OFF \
+    --profile=es2015-subset \
+    --jerry-libc=ON --jerry-libm=ON --jerry-ext=ON \
     --compile-flag=-finstrument-functions --linker-flag=$JERRYSRCDIR/tracer.o --link-lib=-lm
 
 #

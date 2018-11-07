@@ -48,9 +48,10 @@ def make(dirname, version, target):
                 '--clean',
                 '--debug',
                 '--builddir=' + blddir,
-                '--jerry-libc=OFF',
-                '--jerry-libm=OFF',
-                '--jerry-ext=OFF',
+                '--profile=es2015-subset',
+                '--jerry-libc=ON',
+                '--jerry-libm=ON',
+                '--jerry-ext=ON',
                 '--compile-flag=-finstrument-functions',
                 '--linker-flag=' + os.path.join(wd.prevd, 'tracer.o'),
                 '--link-lib=-lm'])
