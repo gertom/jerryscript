@@ -41,6 +41,8 @@
 #define OUTPUT_FILE_NAME "tracer.chains"
 #define CHAIN_ITEM_SEPARATOR "-->"
 
+#define INTENTIONALLY_UNUSED(X) (void)(X);
+
 /**
  * address:      address of the function
  * final:        the function may call no other methods before return
@@ -124,7 +126,7 @@ __cyg_profile_trace_node_type *__cyg_profile_trace_node_Constructor(__cyg_profil
  * @this:   pointer to the root of the sub-tree to be deleted
  */
 void __cyg_profile_trace_node_Destructor(__cyg_profile_trace_node_type *this) {
-	for (int i = 0; i < this->count; ++i) {
+	for (size_t i = 0; i < this->count; ++i) {
 		__cyg_profile_trace_node_Destructor(this->children[i]);
 	}
 	free(this->children);
@@ -140,7 +142,7 @@ void __cyg_profile_trace_node_Destructor(__cyg_profile_trace_node_type *this) {
 
 __cyg_profile_trace_node_type *__cyg_profile_trace_node_add(__cyg_profile_trace_node_type *parent, void *func) {
 	// Check whether the node already exists
-	for (int i = 0; i < parent->count; ++i) {
+	for (size_t i = 0; i < parent->count; ++i) {
 		if (parent->children[i]->address == func) {
 			return parent->children[i];
 		}
@@ -168,7 +170,7 @@ void __cyg_profile_trace_node_collect(__cyg_profile_trace_node_type *node, int d
 		}
 		fprintf(__cyg_profile_tracer_fp, "\n");
 	}
-	for (int i = 0; i < node->count; ++i) {
+	for (size_t i = 0; i < node->count; ++i) {
 		__cyg_profile_trace_node_collect(node->children[i], depth);
 	}
 }
@@ -181,6 +183,7 @@ void __cyg_profile_trace_node_collect(__cyg_profile_trace_node_type *node, int d
  */
 
 void __cyg_profile_tracer_signal_handler(int signo) {
+	INTENTIONALLY_UNUSED(signo)
 	__cyg_profile_trace_end();
 	abort();
 }
@@ -204,6 +207,7 @@ void __cyg_profile_trace_begin(void) {
 	signal(SIGFPE, __cyg_profile_tracer_signal_handler);
 	signal(SIGILL, __cyg_profile_tracer_signal_handler);
 	signal(SIGSEGV, __cyg_profile_tracer_signal_handler);
+	signal(SIGTERM, __cyg_profile_tracer_signal_handler);
 #endif
 }
 
@@ -220,6 +224,7 @@ void __cyg_profile_trace_end(void) {
 	signal(SIGFPE, SIG_DFL);
 	signal(SIGILL, SIG_DFL);
 	signal(SIGSEGV, SIG_DFL);
+	signal(SIGTERM, SIG_DFL);
 #endif
 	if (__cyg_profile_trace.current != __cyg_profile_trace.root) {
 		__cyg_profile_trace.current->final = TRUE;
@@ -244,6 +249,7 @@ void __cyg_profile_trace_end(void) {
  */
 
 void __cyg_profile_func_enter(void *func, void *caller) {
+	INTENTIONALLY_UNUSED(caller)
 	++__cyg_profile_trace.act_depth;
 	if (__cyg_profile_trace.max_depth < __cyg_profile_trace.act_depth) {
 		__cyg_profile_trace.max_depth = __cyg_profile_trace.act_depth;
@@ -258,6 +264,7 @@ void __cyg_profile_func_enter(void *func, void *caller) {
  */
 
 void __cyg_profile_func_exit(void *func, void *caller) {
+	INTENTIONALLY_UNUSED(caller)
 	if (__cyg_profile_trace.last_action_was_an_entry) {
 		__cyg_profile_trace.current->final = TRUE;
 		__cyg_profile_trace.last_action_was_an_entry = FALSE;
