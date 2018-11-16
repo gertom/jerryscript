@@ -85,6 +85,8 @@ typedef struct __cyg_profile_trace_type {
 static __cyg_profile_trace_type __cyg_profile_trace;
 static FILE  *__cyg_profile_tracer_fp = NULL;
 static void **__cyg_profile_tracer_chain_buffer = NULL;
+static volatile int __cyg_profile_atomic_operation = FALSE;
+static volatile int __cyg_profile_signal_occurred = FALSE;
 
 /*
  * Function declaration
@@ -97,6 +99,7 @@ void                           __cyg_profile_trace_node_collect(__cyg_profile_tr
 
 #ifdef __linux__
 void __cyg_profile_tracer_signal_handler(int signo) __attribute__((no_instrument_function));
+void __cyg_profile_tracer_ignore_signal(int signo) __attribute__((no_instrument_function));
 #endif
 
 void __cyg_profile_trace_begin(void) __attribute__((constructor,no_instrument_function));
@@ -148,6 +151,7 @@ __cyg_profile_trace_node_type *__cyg_profile_trace_node_add(__cyg_profile_trace_
 		}
 	}
 	// Extend capacity of children's array if needed
+	__cyg_profile_atomic_operation = TRUE;
 	if(parent->capacity <= parent->count) {
 		size_t newcap = parent->capacity + DEFAULT_CAPACITY_UNIT;
 		void *newptr = realloc(parent->children, newcap * sizeof(__cyg_profile_trace_node_type*));
@@ -158,7 +162,12 @@ __cyg_profile_trace_node_type *__cyg_profile_trace_node_add(__cyg_profile_trace_
 		parent->children = newptr;
 	}
 	// Create a new node and add to the parent as a child
-	return parent->children[parent->count++] = __cyg_profile_trace_node_Constructor(parent, func);
+	__cyg_profile_trace_node_type *newnode = parent->children[parent->count++] = __cyg_profile_trace_node_Constructor(parent, func);
+	__cyg_profile_atomic_operation = FALSE;
+	if (__cyg_profile_signal_occurred) {
+		__cyg_profile_tracer_signal_handler(__cyg_profile_signal_occurred);
+	}
+	return newnode;
 }
 
 void __cyg_profile_trace_node_collect(__cyg_profile_trace_node_type *node, int depth) {
@@ -177,15 +186,42 @@ void __cyg_profile_trace_node_collect(__cyg_profile_trace_node_type *node, int d
 
 #ifdef __linux__
 /**
- * __cyg_profile_trace_signal_handler will help closing the trace file in
+ * __cyg_profile_tracer_signal_handler will help closing the trace file in
  * case of abnormal termination.
  *
  */
 
 void __cyg_profile_tracer_signal_handler(int signo) {
-	INTENTIONALLY_UNUSED(signo)
+	// if we are within the graph building
+	if (__cyg_profile_atomic_operation) {
+		// and we are "asked" to quit
+		if (signo == SIGINT || signo == SIGTERM) {
+			// then allow to finish partial memory operations before aborting
+			__cyg_profile_signal_occurred = signo;
+			return;
+		}
+		// on other signals abort without dumping a (probably corrupted) trace
+		abort();
+	}
+	// in other cases, try to dump trace information
 	__cyg_profile_trace_end();
+	// in we are "asked" to quit, exit normally
+	if (signo == SIGINT || signo == SIGTERM) {
+		exit(signo);
+	}
+	// else abort (with core dump)
 	abort();
+}
+
+/**
+ * __cyg_profile_tracer_ignore_signal will help supressing some signals in
+ * the cleanup phase.
+ *
+ */
+
+void __cyg_profile_tracer_ignore_signal(int signo) {
+	INTENTIONALLY_UNUSED(signo)
+	return;
 }
 #endif
 
@@ -206,6 +242,7 @@ void __cyg_profile_trace_begin(void) {
 	signal(SIGABRT, __cyg_profile_tracer_signal_handler);
 	signal(SIGFPE, __cyg_profile_tracer_signal_handler);
 	signal(SIGILL, __cyg_profile_tracer_signal_handler);
+	signal(SIGINT, __cyg_profile_tracer_signal_handler);
 	signal(SIGSEGV, __cyg_profile_tracer_signal_handler);
 	signal(SIGTERM, __cyg_profile_tracer_signal_handler);
 #endif
@@ -223,8 +260,9 @@ void __cyg_profile_trace_end(void) {
 	signal(SIGABRT, SIG_DFL);
 	signal(SIGFPE, SIG_DFL);
 	signal(SIGILL, SIG_DFL);
+	signal(SIGINT, SIG_DFL);
 	signal(SIGSEGV, SIG_DFL);
-	signal(SIGTERM, SIG_DFL);
+	signal(SIGTERM, __cyg_profile_tracer_ignore_signal);
 #endif
 	if (__cyg_profile_trace.current != __cyg_profile_trace.root) {
 		__cyg_profile_trace.current->final = TRUE;
@@ -240,6 +278,9 @@ void __cyg_profile_trace_end(void) {
 		}
 		free(__cyg_profile_tracer_chain_buffer);
 	}
+#ifdef __linux__
+	signal(SIGTERM, SIG_DFL);
+#endif
 	__cyg_profile_trace_node_Destructor(__cyg_profile_trace.root);
 }
 
