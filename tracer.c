@@ -22,24 +22,47 @@
  */
 
 #include <stdio.h>
-#include <memory.h>
+#include <stdlib.h>
 
 #ifdef __linux__
-#include <signal.h>
-#include <stdlib.h>
+  #include <signal.h>
 #endif
 
 #ifndef FALSE
-#define FALSE 0
+  #define FALSE 0
 #endif
 
 #ifndef TRUE
-#define TRUE !FALSE
+  #define TRUE !FALSE
 #endif
 
 #define DEFAULT_CAPACITY_UNIT 16
-#define OUTPUT_FILE_NAME "tracer.chains"
-#define CHAIN_ITEM_SEPARATOR "-->"
+#define CHAIN_ITEM_TYPE     unsigned int
+#ifdef TRACER_BINARY_CHAINS
+  #define OUTPUT_FILE_NAME     "tracer.bchains"
+  #define OUTPUT_FILE_MODE     "b"
+  #undef  CHAIN_ITEM_FORMAT
+  #undef  CHAIN_ITEM_SEPARATOR
+  #define CHAIN_END_CHAIN      0ll
+  #define CHAIN_START_PROGRAM  1ll
+  #define CHAIN_QUIT_PROGRAM   2ll
+#else
+  #define OUTPUT_FILE_NAME     "tracer.chains"
+  #define OUTPUT_FILE_MODE     "t"
+  #define CHAIN_ITEM_FORMAT    "0x%x"
+  #define CHAIN_ITEM_SEPARATOR "-->"
+  #define CHAIN_END_CHAIN      "\n"
+  #define CHAIN_START_PROGRAM  "## START PROGRAM\n"
+  #define CHAIN_QUIT_PROGRAM   "## QUIT PROGRAM\n"
+#endif
+
+#ifndef TRACER_VERBOSE
+#define TRACER_LOGM(msg)
+#define TRACER_LOGS(msg,sgn)
+#else
+#define TRACER_LOGM(msg) fprintf(stderr, MSG "\n")
+#define TRACER_LOGS(msg,sgn) fprintf(stderr, MSG "\n", signo)
+#endif
 
 #define INTENTIONALLY_UNUSED(X) (void)(X);
 
@@ -84,9 +107,11 @@ typedef struct __cyg_profile_trace_type {
 
 static __cyg_profile_trace_type __cyg_profile_trace;
 static FILE  *__cyg_profile_tracer_fp = NULL;
-static void **__cyg_profile_tracer_chain_buffer = NULL;
+static CHAIN_ITEM_TYPE *__cyg_profile_tracer_chain_buffer = NULL;
+#ifdef __linux__
 static volatile int __cyg_profile_atomic_operation = FALSE;
-static volatile int __cyg_profile_signal_occurred = FALSE;
+static volatile int __cyg_profile_signal_occurred = 0;
+#endif
 
 /*
  * Function declaration
@@ -151,11 +176,14 @@ __cyg_profile_trace_node_type *__cyg_profile_trace_node_add(__cyg_profile_trace_
 		}
 	}
 	// Extend capacity of children's array if needed
+#ifdef __linux__
 	__cyg_profile_atomic_operation = TRUE;
+#endif
 	if(parent->capacity <= parent->count) {
 		size_t newcap = parent->capacity + DEFAULT_CAPACITY_UNIT;
 		void *newptr = realloc(parent->children, newcap * sizeof(__cyg_profile_trace_node_type*));
 		if (!newptr) {
+			TRACER_LOGM("Aborting in __cyg_profile_trace_node_add(): cannot increase node capacity");
 			abort();
 		}
 		parent->capacity = newcap;
@@ -163,21 +191,29 @@ __cyg_profile_trace_node_type *__cyg_profile_trace_node_add(__cyg_profile_trace_
 	}
 	// Create a new node and add to the parent as a child
 	__cyg_profile_trace_node_type *newnode = parent->children[parent->count++] = __cyg_profile_trace_node_Constructor(parent, func);
+#ifdef __linux__
 	__cyg_profile_atomic_operation = FALSE;
 	if (__cyg_profile_signal_occurred) {
-		__cyg_profile_tracer_signal_handler(__cyg_profile_signal_occurred);
+		TRACER_LOGS("Handling signal in __cyg_profile_trace_node_add(): handling postponed signal %d", __cyg_profile_signal_occurred);
+		raise(__cyg_profile_signal_occurred);
 	}
+#endif
 	return newnode;
 }
 
 void __cyg_profile_trace_node_collect(__cyg_profile_trace_node_type *node, int depth) {
-	__cyg_profile_tracer_chain_buffer[depth++] = node->address;
+	__cyg_profile_tracer_chain_buffer[depth++] = (CHAIN_ITEM_TYPE) ((unsigned long int) (node->address));
 	if (node->final) {
-		fprintf(__cyg_profile_tracer_fp, "%p", __cyg_profile_tracer_chain_buffer[1]);
+#ifdef TRACER_BINARY_CHAINS
+		__cyg_profile_tracer_chain_buffer[depth] = CHAIN_END_CHAIN;
+		fwrite(__cyg_profile_tracer_chain_buffer + 1, sizeof(CHAIN_ITEM_TYPE), depth, __cyg_profile_tracer_fp);
+#else
+		fprintf(__cyg_profile_tracer_fp, CHAIN_ITEM_FORMAT, __cyg_profile_tracer_chain_buffer[1]);
 		for (int i = 2; i < depth; ++i) {
-			fprintf(__cyg_profile_tracer_fp, CHAIN_ITEM_SEPARATOR "%p", __cyg_profile_tracer_chain_buffer[i]);
+			fprintf(__cyg_profile_tracer_fp, CHAIN_ITEM_SEPARATOR CHAIN_ITEM_FORMAT, __cyg_profile_tracer_chain_buffer[i]);
 		}
-		fprintf(__cyg_profile_tracer_fp, "\n");
+		fprintf(__cyg_profile_tracer_fp, CHAIN_END_CHAIN);
+#endif
 	}
 	for (size_t i = 0; i < node->count; ++i) {
 		__cyg_profile_trace_node_collect(node->children[i], depth);
@@ -192,24 +228,28 @@ void __cyg_profile_trace_node_collect(__cyg_profile_trace_node_type *node, int d
  */
 
 void __cyg_profile_tracer_signal_handler(int signo) {
+	fprintf(stderr, "Signal %d received\r\n", signo);
 	// if we are within the graph building
 	if (__cyg_profile_atomic_operation) {
 		// and we are "asked" to quit
 		if (signo == SIGINT || signo == SIGTERM) {
 			// then allow to finish partial memory operations before aborting
 			__cyg_profile_signal_occurred = signo;
+			TRACER_LOGS("Returning from __cyg_profile_tracer_signal_handler(): non-fatal signal %d occurred in atomic operation\n", signo);
 			return;
 		}
 		// on other signals abort without dumping a (probably corrupted) trace
+		TRACER_LOGS("Aborting in __cyg_profile_tracer_signal_handler(): signal %d occurred in atomic operation", signo);
 		abort();
 	}
-	// in other cases, try to dump trace information
-	__cyg_profile_trace_end();
-	// in we are "asked" to quit, exit normally
+	// in we are "asked" to quit, exit normally (this will automatically dump the trace)
 	if (signo == SIGINT || signo == SIGTERM) {
+		TRACER_LOGS("Exiting from __cyg_profile_tracer_signal_handler(): non-fatal signal %d occurred", signo);
 		exit(signo);
 	}
-	// else abort (with core dump)
+	// else try to dump trace information and abort
+	TRACER_LOGS("Aborting in __cyg_profile_tracer_signal_handler(): signal %d suggests some errors", signo);
+	__cyg_profile_trace_end();
 	abort();
 }
 
@@ -267,13 +307,24 @@ void __cyg_profile_trace_end(void) {
 	if (__cyg_profile_trace.current != __cyg_profile_trace.root) {
 		__cyg_profile_trace.current->final = TRUE;
 	}
-	__cyg_profile_tracer_chain_buffer = malloc(__cyg_profile_trace.max_depth * sizeof(void*));
+	__cyg_profile_tracer_chain_buffer = malloc((__cyg_profile_trace.max_depth + 1) * sizeof(CHAIN_ITEM_TYPE));
 	if (__cyg_profile_tracer_chain_buffer) {
-		__cyg_profile_tracer_fp = fopen(OUTPUT_FILE_NAME, "a");
+		__cyg_profile_tracer_fp = fopen(OUTPUT_FILE_NAME, "a" OUTPUT_FILE_MODE);
 		if (__cyg_profile_tracer_fp) {
-			fprintf(__cyg_profile_tracer_fp, "## START PROGRAM\n");
+#ifdef TRACER_BINARY_CHAINS
+			CHAIN_ITEM_TYPE startstop;
+			startstop = CHAIN_START_PROGRAM;
+			fwrite(&startstop, sizeof(startstop), 1, __cyg_profile_tracer_fp);
+#else
+			fprintf(__cyg_profile_tracer_fp, CHAIN_START_PROGRAM);
+#endif
 			__cyg_profile_trace_node_collect(__cyg_profile_trace.root, 0);
-			fprintf(__cyg_profile_tracer_fp, "## QUIT PROGRAM\n");
+#ifdef TRACER_BINARY_CHAINS
+			startstop = CHAIN_QUIT_PROGRAM;
+			fwrite(&startstop, sizeof(startstop), 1, __cyg_profile_tracer_fp);
+#else
+			fprintf(__cyg_profile_tracer_fp, CHAIN_QUIT_PROGRAM);
+#endif
 			fclose(__cyg_profile_tracer_fp);
 		}
 		free(__cyg_profile_tracer_chain_buffer);

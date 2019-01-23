@@ -1,0 +1,398 @@
+[
+  {
+    "issue": 2719,
+    "rev_bug": "c23cf417",
+    "testcase": "JSON.stringify(URIError, valueOf, new String('abc\\u2040\\u2030cba'));\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-m32 --profile=es2015-subset --system-allocator=on --error-messages=on --logging=on\r\n"
+  },
+  {
+    "issue": 2700,
+    "rev_bug": "adb80c20",
+    "testcase": "Promise.race(new Array(0xfffffffe)); \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-m32 --profile=es2015-subset --system-allocator=on --error-messages=on --logging=on\r\n"
+  },
+  {
+    "issue": 2693,
+    "rev_bug": "93ec2266",
+    "testcase": "Object.defineProperty(Array.prototype, 0, { get : function ( ) {throw $} });\r\nPromise.all([,]);\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2667,
+    "rev_bug": "b69f3fd0",
+    "testcase": "new Strin = class extends f ()() {\r\n    constructor () {\r\n        var C = class extends$B {}\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2666,
+    "rev_bug": "b69f3fd0",
+    "testcase": "class C {\r\n    static D () {}\r\n}\r\n\r\nclass D extends C {}\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2660,
+    "rev_bug": "ec142f5f",
+    "testcase": "new RegExp(\"\\{{91[06,456}\");\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2658,
+    "rev_bug": "ec142f5f",
+    "testcase": "var A = class extends null {}\r\nnew A;\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2657,
+    "rev_bug": "ec142f5f",
+    "testcase": "var Mixin1 = (superclass) => class extends super.lass {};\r\nvar Mixin2 = (superclass) => class extends superclass {};\r\nclass S {}\r\nclass C extends Mixin1 (Mixin2 (S)) {}\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2656,
+    "rev_bug": "ec142f5f",
+    "testcase": "function testcase ( ) { \r\n    obj.hasOwnProperty(\"arguments\") ; \r\n} \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2654,
+    "rev_bug": "ec142f5f",
+    "testcase": "--null.static ? this : [ , ] instanceof true; \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2653,
+    "rev_bug": "ec142f5f",
+    "testcase": "Object.defineProperty (Object.prototype, \"\" , { 'set' : function ( ) { throw new ReferenceError ( \"foo\" ) ; } } ) ; \r\nJSON.stringify( )\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2603,
+    "rev_bug": "704eb45c",
+    "testcase": "Object.defineProperty( Array.prototype, 0, { set : function ( ) { throw \"MyError\" } } ); \r\nPromise.all( [ .86456 ] ) ;\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2602,
+    "rev_bug": "704eb45c",
+    "testcase": "Object.defineProperty ( Array.prototype , 0 , { set : function ( ) { throw \"MyError\" } } ) ; \r\nPromise.all ( [ \"2015-01-01\" ] ) ; \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2544,
+    "rev_bug": "7717d2ee",
+    "testcase": "Object.defineProperty(Array.prototype, 0, { get : function ( ) { throw $; } } ) ; \r\nPromise.race([, this]).then(Error) \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2528,
+    "rev_bug": "2d83d8ed",
+    "testcase": "for ( /a/ in yield => { } , yield => { } , yield => { } ) throw 1\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2490,
+    "rev_bug": "300e40ba",
+    "testcase": "Object.defineProperty(Object.prototype, 6, {});\r\nPromise.all([0]);\r\n",
+    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2489,
+    "rev_bug": "300e40ba",
+    "testcase": "Object.defineProperty(Object.prototype, 0, {'get': function() { throw $ }});\r\nPromise.all();\r\n",
+    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2488,
+    "rev_bug": "300e40ba",
+    "testcase": "Object.defineProperty(Array.prototype, 0, {set: function() {throw \"MyError\"}});\r\nPromise.all([0])\r\n",
+    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2487,
+    "rev_bug": "300e40ba",
+    "testcase": "Object.defineProperty(Array.prototype, 0, {set: function() {var $ = $()}});\r\nPromise.all([0])\r\n",
+    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2486,
+    "rev_bug": "300e40ba",
+    "testcase": "Object.setPrototypeOf(Math, Int32Array);\r\nfor (var i = 0; i < 200; i++) { \r\n    Promise.race([, [,] % {}]).then(); \r\n}\r\n\r\n",
+    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2468,
+    "rev_bug": "29e7330b",
+    "testcase": "Object.prototype[1] = 0; \r\nPromise.race([]);\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address \\\r\n--compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer \\\r\n--compile-flag=-fno-common --compile-flag=-g --jerry-libc=off \\\r\n--strip=off --system-allocator=on \\\r\n--linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2465,
+    "rev_bug": "29e7330b",
+    "testcase": "Object.prototype [ 1 ] = 0;  \r\nPromise.all( )\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address \\\r\n--compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer \\\r\n--compile-flag=-fno-common --compile-flag=-g --jerry-libc=off \\\r\n--strip=off --system-allocator=on \\\r\n--linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2453,
+    "rev_bug": "1ac2903d",
+    "testcase": "var src = \"\";\r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += 4 + i + \": a += a += a; break; \" ; \r\n    src += \"\\𝔺\\\r\n\\ \" ; \r\nprint ( src ) ;\r\n \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address\r\n--compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer\r\n--compile-flag=-fno-common --compile-flag=-g --logging=on\r\n--strip=off --system-allocator=on\r\n--linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2452,
+    "rev_bug": "1ac2903d",
+    "testcase": "var src = \"\";\r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += \"\\udc00%f0%90%80%80\\udc00\";\r\nsrc += \"} }\" ; \r\nprint ( src ) ;\r\n \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address\r\n--compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer\r\n--compile-flag=-fno-common --compile-flag=-g --logging=on\r\n--strip=off --system-allocator=on\r\n--linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2451,
+    "rev_bug": "1ac2903d",
+    "testcase": "var src = \"var a = 0; while(a) { switch(a) {\" ; \r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += \"-Infinity\" + i + \"\\u00a0\\u00a01.2e3\" ; \r\nsrc += \"\\udc00%f0%90%80%80\\udc00\" ; \r\nprint ( src ) ; \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address \\\r\n--compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer \\\r\n--compile-flag=-fno-common --compile-flag=-g \\\r\n--strip=off --system-allocator=on \\\r\n--linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset --logging=on\r\n"
+  },
+  {
+    "issue": 2386,
+    "rev_bug": "8b8bced6",
+    "testcase": "Math in Number\r\n",
+    "bld_cmd": "CC=clang ./tools/build.py --clean --debug --compile-flag=-fsanitize=address \\\r\n        --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer \\\r\n        --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off \\\r\n        --strip=off --system-allocator=on \\\r\n        --linker-flag=-fuse-ld=gold --error-messages=on --lto=off\r\n(Can be reproduced with GCC, too.)\r\n"
+  },
+  {
+    "issue": 2384,
+    "rev_bug": "8b8bced6",
+    "testcase": "\"[]{83}\".match(\"(?=){12,8}\")\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+  },
+  {
+    "issue": 2344,
+    "rev_bug": "872825fb",
+    "testcase": "new RegExp().compile(\"\\\\1\\\\\");\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address \\\r\n        --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer \\\r\n        --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off \\\r\n        --static-link=off --strip=off --system-allocator=on \\\r\n        --linker-flag=-fuse-ld=gold --error-messages=on\r\n"
+  },
+  {
+    "issue": 2258,
+    "rev_bug": "79289714",
+    "testcase": "JSON.stringify(10, Array)\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2204,
+    "rev_bug": "d7991ae5",
+    "testcase": "new RegExp(\"\\{{91406,456}\");\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+  },
+  {
+    "issue": 2198,
+    "rev_bug": "e8608707",
+    "testcase": "var id_0 = Object.prototype.toString ; \r\nObject.prototype.toString = function ( ) { return \"SHIFTED\" } ; \r\nRegExp ( '#1: __str = new String({}); typeof __str === \"object\". Actual: typeof __str ===');\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+  },
+  {
+    "issue": 2192,
+    "rev_bug": "918eb22a",
+    "testcase": "JSON.parse('\"' + '\\\\u');\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2190,
+    "rev_bug": "918eb22a",
+    "testcase": "/(?:(?=x)){1000}xyz/.exec('xyz'); \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2182,
+    "rev_bug": "918eb22a",
+    "testcase": "function applyTest ( x , y , z ) { } \r\napplyTest.apply('mythis' , { length : 0x40000001 } );\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2181,
+    "rev_bug": "918eb22a",
+    "testcase": "var arrayBuffer = new ArrayBuffer(8); \r\nvar start = { toString : function ( ) { throw \"inend\" ; } }; \r\nvar end = { valueOf : function ( ) { } }; \r\narrayBuffer.slice(start, end); \r\n \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2180,
+    "rev_bug": "918eb22a",
+    "testcase": "JSON.parse('\"' + '\\\\');\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2143,
+    "rev_bug": "90f2473f",
+    "testcase": "var a = new Uint8Array(2);\r\na[0] = { valueOf : function() { throw \"intoint\" ; } };\r\n\r\n",
+    "bld_cmd": "tools/build.py --clean --debug --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2111,
+    "rev_bug": "7692aa9d",
+    "testcase": "var value = {};\r\nvar poisonedThen = Object.defineProperty({}, 'then', {\r\n  get: function() {\r\n    throw value;\r\n  }\r\n});\r\nvar promise = new Promise(function(resolve) {\r\n  resolve(poisonedThen);\r\n});\r\n\r\n",
+    "bld_cmd": "tools/build.py --clean --debug --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2110,
+    "rev_bug": "7692aa9d",
+    "testcase": "var arrowFn = () => {};\r\narrowFn.hasOwnProperty('caller');\r\n",
+    "bld_cmd": "tools/build.py --clean --debug --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2108,
+    "rev_bug": "7692aa9d",
+    "testcase": "print(new Number(8e-9).toFixed(20));\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+  },
+  {
+    "issue": 2107,
+    "rev_bug": "7692aa9d",
+    "testcase": "\r\nvar thenableWithError = {\r\n    then: function() { throw new Error(\"\") }\r\n}\r\nfunction executor(resolve) {\r\n    resolve(thenableWithError)\r\n}\r\nnew Promise(executor).a()\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2106,
+    "rev_bug": "7692aa9d",
+    "testcase": "new Float32Array({ length: 0x40000001 })\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2105,
+    "rev_bug": "7692aa9d",
+    "testcase": "\r\nObject.freeze (this)\r\n{\r\neval('{ function boo() {} }')\r\n}\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+  },
+  {
+    "issue": 2104,
+    "rev_bug": "7692aa9d",
+    "testcase": "var value;\r\nObject.defineProperty (Array.prototype, 'then', {get: function() { throw$ } })\r\npromise = Promise.all ([])\r\npromise.then (\r\n    function() {},\r\n    function(val) {\r\n        if (val !== value) ;\r\n    })\r\n\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2073,
+    "rev_bug": "bdcd2d8",
+    "testcase": "Date.parse(\"2015-01-01T01߄'a': 1}:01F\");\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+  },
+  {
+    "issue": 2069,
+    "rev_bug": "678fcb20",
+    "testcase": "null[1] = 'abcd'; \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on\r\n"
+  },
+  {
+    "issue": 2065,
+    "rev_bug": "d9cc3fd",
+    "testcase": "var a = Promise.prototype;\r\nfor (var i = 0; i < 200; i++)\r\n{\r\n    Promise.race([a]).then();\r\n}\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug  --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 2058,
+    "rev_bug": "d7c710d",
+    "testcase": "/?:/\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+  },
+  {
+    "issue": 1997,
+    "rev_bug": "7905422",
+    "testcase": "var a = Promise.resolve();\r\nfor (;;)\r\n    Promise.race([a]).then()\r\n$\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 1996,
+    "rev_bug": "7905422",
+    "testcase": "new Promise(function(f) {\r\n    f.apply()\r\n})\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 1995,
+    "rev_bug": "7525006",
+    "testcase": "Promise.race([\"\"]).$()\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --jerry-libc=off\r\n"
+  },
+  {
+    "issue": 1993,
+    "rev_bug": "ce18704",
+    "testcase": "parseFloat(Number.MAX_VALUE).toFixed(5);\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+  },
+  {
+    "issue": 1990,
+    "rev_bug": "0ef2418",
+    "testcase": "unescape(\"%f׊nd\")\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+  },
+  {
+    "issue": 1936,
+    "rev_bug": "1526bcc",
+    "testcase": "Object.defineProperties(constructor.isExtensible, {a: Object.getOwnPropertyDescriptor(Uint8ClampedArray, \"length\")})\r\nnew Int32Array(new ArrayBuffer(), undefined, Date.now())\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --compile-flag=-m32 --system-allocator=on --jerry-libc=off --error-messages=on\r\n"
+  },
+  {
+    "issue": 1918,
+    "rev_bug": "3d744c9",
+    "testcase": "\r\nthrow $ = {name: function () {}}\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --profile=es2015-subset --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on\r\n"
+  },
+  {
+    "issue": 1917,
+    "rev_bug": "3d744c9",
+    "testcase": "\r\n'foobar'.replace(/(ob)/g, '$0')\r\n\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --profile=es2015-subset --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on\r\n"
+  },
+  {
+    "issue": 1881,
+    "rev_bug": "905cd70",
+    "testcase": "new Promise(isFinite.toString).catch(Promise.prototype.then)\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --profile=es2015-subset --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold  --error-messages=on\r\n"
+  },
+  {
+    "issue": 1873,
+    "rev_bug": "a9e7dd7",
+    "testcase": "if (function() {\r\n    while ({a: a,\r\n            get a() {}\r\n           })\r\n        continue;\r\n    })\r\n    var a;\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+  },
+  {
+    "issue": 1871,
+    "rev_bug": "a9e7dd7",
+    "testcase": "// in hex:\r\n\\xf0\\x90\\xae\\xa9\\xe0\\xad\\x9f\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+  },
+  {
+    "issue": 1861,
+    "rev_bug": "b51b682",
+    "testcase": "javascript\n{  ( $\n&& $ != $ instanceof [ $ , /[\\￐]\\🀬/ ]\n? $ : $\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on\n"
+  },
+  {
+    "issue": 1831,
+    "rev_bug": "31cd3b8",
+    "testcase": "/኱𞻲/‌ஃ︠﹍\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on\r\n"
+  },
+  {
+    "issue": 1830,
+    "rev_bug": "31cd3b8",
+    "testcase": "/[\\꧿]ౘ/\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on\r\n"
+  },
+  {
+    "issue": 1829,
+    "rev_bug": "31cd3b8",
+    "testcase": "for ({get 10() {} };;)\r\n    break;\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on\r\n"
+  },
+  {
+    "issue": 1763,
+    "rev_bug": "ea44b3b",
+    "testcase": "\r\nnew Promise(Math.max.propertyIsEnumerable.toString).then()\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+  },
+  {
+    "issue": 1701,
+    "rev_bug": "3ff9a7d",
+    "testcase": "Number(982).toPrecision(1)\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on\r\n"
+  },
+  {
+    "issue": 1670,
+    "rev_bug": "4420401",
+    "testcase": "Int16Array.from();\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --compile-flag=-m32 --system-allocator=on --jerry-libc=off --error-messages=on\r\n"
+  }
+]
