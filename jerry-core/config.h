@@ -38,20 +38,15 @@
 #ifdef CONFIG_DISABLE_ES2015
 # define CONFIG_DISABLE_ES2015_ARROW_FUNCTION
 # define CONFIG_DISABLE_ES2015_BUILTIN
+# define CONFIG_DISABLE_ES2015_CLASS
+# define CONFIG_DISABLE_ES2015_FUNCTION_PARAMETER_INITIALIZER
+# define CONFIG_DISABLE_ES2015_MAP_BUILTIN
+# define CONFIG_DISABLE_ES2015_OBJECT_INITIALIZER
 # define CONFIG_DISABLE_ES2015_PROMISE_BUILTIN
+# define CONFIG_DISABLE_ES2015_SYMBOL_BUILTIN
 # define CONFIG_DISABLE_ES2015_TEMPLATE_STRINGS
 # define CONFIG_DISABLE_ES2015_TYPEDARRAY_BUILTIN
 #endif /* CONFIG_DISABLE_ES2015 */
-
-/**
- * Limit of data (system heap, engine's data except engine's own heap)
- */
-#define CONFIG_MEM_DATA_LIMIT_MINUS_HEAP_SIZE (1024)
-
-/**
- * Limit of stack size
- */
-#define CONFIG_MEM_STACK_LIMIT (4096)
 
 /**
  * Size of heap
@@ -108,16 +103,5 @@
  *                1.0 / CONFIG_ECMA_GC_NEW_OBJECTS_SHARE_TO_START_GC
  */
 #define CONFIG_ECMA_GC_NEW_OBJECTS_SHARE_TO_START_GC (16)
-
-/**
- * Link Global Environment to an empty declarative lexical environment
- * instead of lexical environment bound to Global Object.
- */
-// #define CONFIG_ECMA_GLOBAL_ENVIRONMENT_DECLARATIVE
-
-/**
- * Number of ecma values inlined into VM stack frame
- */
-#define CONFIG_VM_STACK_FRAME_INLINED_VALUES_NUMBER (16)
 
 #endif /* !CONFIG_H */

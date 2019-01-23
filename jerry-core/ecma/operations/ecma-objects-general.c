@@ -62,11 +62,7 @@ ecma_op_create_object_object_noarg (void)
   ecma_object_t *object_prototype_p = ecma_builtin_get (ECMA_BUILTIN_ID_OBJECT_PROTOTYPE);
 
   /* 3., 4., 6., 7. */
-  ecma_object_t *obj_p = ecma_op_create_object_object_noarg_and_set_prototype (object_prototype_p);
-
-  ecma_deref_object (object_prototype_p);
-
-  return obj_p;
+  return ecma_op_create_object_object_noarg_and_set_prototype (object_prototype_p);
 } /* ecma_op_create_object_object_noarg */
 
 /**
@@ -169,18 +165,15 @@ ecma_op_general_object_delete (ecma_object_t *obj_p, /**< the object */
     /* b. */
     return ECMA_VALUE_TRUE;
   }
-  else if (is_throw)
+
+  /* 4. */
+  if (is_throw)
   {
-    /* 4. */
     return ecma_raise_type_error (ECMA_ERR_MSG ("Expected a configurable property."));
   }
-  else
-  {
-    /* 5. */
-    return ECMA_VALUE_FALSE;
-  }
 
-  JERRY_UNREACHABLE ();
+  /* 5. */
+  return ECMA_VALUE_FALSE;
 } /* ecma_op_general_object_delete */
 
 /**

@@ -17,7 +17,6 @@
 #include "ecma-gc.h"
 #include "ecma-globals.h"
 #include "ecma-helpers.h"
-#include "ecma-lcache.h"
 #include "jrt.h"
 #include "jrt-libc-includes.h"
 #include "lit-char-helpers.h"
@@ -174,6 +173,66 @@ ecma_string_get_chars_fast (const ecma_string_t *string_p, /**< ecma-string */
     }
   }
 } /* ecma_string_get_chars_fast */
+
+/**
+ * Allocate new ecma-string and fill it with reference to ECMA magic string
+ *
+ * @return pointer to ecma-string descriptor
+ */
+static ecma_string_t *
+ecma_new_ecma_string_from_magic_string_ex_id (lit_magic_string_ex_id_t id) /**< identifier of externl magic string */
+{
+  JERRY_ASSERT (id < lit_get_magic_string_ex_count ());
+
+  if (JERRY_LIKELY (id <= ECMA_DIRECT_STRING_MAX_IMM))
+  {
+    return (ecma_string_t *) ECMA_CREATE_DIRECT_STRING (ECMA_DIRECT_STRING_MAGIC_EX, (uintptr_t) id);
+  }
+
+  ecma_string_t *string_desc_p = ecma_alloc_string ();
+
+  string_desc_p->refs_and_container = ECMA_STRING_CONTAINER_MAGIC_STRING_EX | ECMA_STRING_REF_ONE;
+  string_desc_p->hash = (lit_string_hash_t) (LIT_MAGIC_STRING__COUNT + id);
+  string_desc_p->u.magic_string_ex_id = id;
+
+  return string_desc_p;
+} /* ecma_new_ecma_string_from_magic_string_ex_id */
+
+#ifndef CONFIG_DISABLE_ES2015_SYMBOL_BUILTIN
+/**
+ * Allocate new ecma-string and fill it with reference to the symbol descriptor
+ *
+ * @return pointer to ecma-string descriptor
+ */
+ecma_string_t *
+ecma_new_symbol_from_descriptor_string (ecma_value_t string_desc) /**< ecma-string */
+{
+  JERRY_ASSERT (!ecma_is_value_symbol (string_desc));
+
+  ecma_string_t *symbol_p = ecma_alloc_string ();
+  symbol_p->refs_and_container = ECMA_STRING_REF_ONE | ECMA_STRING_CONTAINER_SYMBOL;
+  symbol_p->u.symbol_descriptor = string_desc;
+  symbol_p->hash = (uint16_t) (((uintptr_t) symbol_p) >> ECMA_SYMBOL_HASH_SHIFT);
+  JERRY_ASSERT ((symbol_p->hash & ECMA_GLOBAL_SYMBOL_FLAG) == 0);
+
+  return symbol_p;
+} /* ecma_new_symbol_from_descriptor_string */
+
+/**
+ * Check whether an ecma-string contains an ecma-symbol
+ *
+ * @return true - if the ecma-string contains an ecma-symbol
+ *         false - otherwise
+ */
+bool
+ecma_prop_name_is_symbol (ecma_string_t *string_p) /**< ecma-string */
+{
+  JERRY_ASSERT (string_p != NULL);
+
+  return (!ECMA_IS_DIRECT_STRING (string_p)
+          && ECMA_STRING_GET_CONTAINER (string_p) == ECMA_STRING_CONTAINER_SYMBOL);
+} /* ecma_prop_name_is_symbol */
+#endif /* !CONFIG_DISABLE_ES2015_SYMBOL_BUILTIN */
 
 /**
  * Allocate new ecma-string and fill it with characters from the utf8 string
@@ -410,7 +469,7 @@ ecma_new_ecma_string_from_uint32 (uint32_t uint32_number) /**< uint32 value of t
  * @return pointer to ecma-string descriptor
  */
 ecma_string_t *
-ecma_get_ecma_string_from_uint32 (uint32_t uint32_number)
+ecma_get_ecma_string_from_uint32 (uint32_t uint32_number) /**< input number */
 {
   JERRY_ASSERT (uint32_number <= ECMA_DIRECT_STRING_MAX_IMM);
 
@@ -479,30 +538,6 @@ ecma_get_magic_string (lit_magic_string_id_t id) /**< identifier of magic string
   JERRY_ASSERT (id < LIT_MAGIC_STRING__COUNT);
   return (ecma_string_t *) ECMA_CREATE_DIRECT_STRING (ECMA_DIRECT_STRING_MAGIC, (uintptr_t) id);
 } /* ecma_get_magic_string */
-
-/**
- * Allocate new ecma-string and fill it with reference to ECMA magic string
- *
- * @return pointer to ecma-string descriptor
- */
-ecma_string_t *
-ecma_new_ecma_string_from_magic_string_ex_id (lit_magic_string_ex_id_t id) /**< identifier of externl magic string */
-{
-  JERRY_ASSERT (id < lit_get_magic_string_ex_count ());
-
-  if (JERRY_LIKELY (id <= ECMA_DIRECT_STRING_MAX_IMM))
-  {
-    return (ecma_string_t *) ECMA_CREATE_DIRECT_STRING (ECMA_DIRECT_STRING_MAGIC_EX, (uintptr_t) id);
-  }
-
-  ecma_string_t *string_desc_p = ecma_alloc_string ();
-
-  string_desc_p->refs_and_container = ECMA_STRING_CONTAINER_MAGIC_STRING_EX | ECMA_STRING_REF_ONE;
-  string_desc_p->hash = (lit_string_hash_t) (LIT_MAGIC_STRING__COUNT + id);
-  string_desc_p->u.magic_string_ex_id = id;
-
-  return string_desc_p;
-} /* ecma_new_ecma_string_from_magic_string_ex_id */
 
 /**
  * Append a cesu8 string after an ecma-string
@@ -839,8 +874,8 @@ ecma_concat_ecma_strings (ecma_string_t *string1_p, /**< first ecma-string */
  * @return concatenation of an ecma-string and a magic string
  */
 ecma_string_t *
-ecma_append_magic_string_to_string (ecma_string_t *string1_p,
-                                    lit_magic_string_id_t string2_id)
+ecma_append_magic_string_to_string (ecma_string_t *string1_p, /**< string descriptor */
+                                    lit_magic_string_id_t string2_id) /**< magic string ID */
 {
   if (JERRY_UNLIKELY (ecma_string_is_empty (string1_p)))
   {
@@ -930,20 +965,24 @@ ecma_deref_ecma_string (ecma_string_t *string_p) /**< ecma-string */
       ecma_dealloc_string_buffer (string_p, string_p->u.long_utf8_string_size + sizeof (ecma_long_string_t));
       return;
     }
-    case ECMA_STRING_CONTAINER_UINT32_IN_DESC:
-    case ECMA_STRING_CONTAINER_MAGIC_STRING_EX:
-    {
-      /* only the string descriptor itself should be freed */
-      break;
-    }
     case ECMA_STRING_LITERAL_NUMBER:
     {
       ecma_free_value (string_p->u.lit_number);
       break;
     }
+#ifndef CONFIG_DISABLE_ES2015_SYMBOL_BUILTIN
+    case ECMA_STRING_CONTAINER_SYMBOL:
+    {
+      ecma_free_value (string_p->u.symbol_descriptor);
+      break;
+    }
+#endif /* !CONFIG_DISABLE_ES2015_SYMBOL_BUILTIN */
     default:
     {
-      JERRY_UNREACHABLE ();
+      JERRY_ASSERT (ECMA_STRING_GET_CONTAINER (string_p) == ECMA_STRING_CONTAINER_UINT32_IN_DESC
+                    || ECMA_STRING_GET_CONTAINER (string_p) == ECMA_STRING_CONTAINER_MAGIC_STRING_EX);
+
+      /* only the string descriptor itself should be freed */
       break;
     }
   }
@@ -953,6 +992,8 @@ ecma_deref_ecma_string (ecma_string_t *string_p) /**< ecma-string */
 
 /**
  * Convert ecma-string to number
+ *
+ * @return converted ecma-number
  */
 ecma_number_t
 ecma_string_to_number (const ecma_string_t *string_p) /**< ecma-string */
@@ -1227,7 +1268,7 @@ ecma_substring_copy_to_utf8_buffer (const ecma_string_t *string_desc_p, /**< ecm
                                     lit_utf8_size_t buffer_size) /**< size of buffer */
 {
   JERRY_ASSERT (string_desc_p != NULL);
-  JERRY_ASSERT (string_desc_p->refs_and_container >= ECMA_STRING_REF_ONE);
+  JERRY_ASSERT (ECMA_IS_DIRECT_STRING (string_desc_p) || string_desc_p->refs_and_container >= ECMA_STRING_REF_ONE);
   JERRY_ASSERT (buffer_p != NULL || buffer_size == 0);
 
   lit_utf8_size_t size = 0;
@@ -1512,12 +1553,10 @@ ecma_string_get_chars (const ecma_string_t *string_p, /**< ecma-string */
   }
 
   *size_p = size;
-  if (*flags_p & ECMA_STRING_FLAG_IS_ASCII)
+  if ((*flags_p & ECMA_STRING_FLAG_IS_ASCII)
+      && length != size)
   {
-    if (length != size)
-    {
-      *flags_p = (uint8_t) (*flags_p & ~ECMA_STRING_FLAG_IS_ASCII);
-    }
+    *flags_p = (uint8_t) (*flags_p & ~ECMA_STRING_FLAG_IS_ASCII);
   }
 
   return result_p;
@@ -1560,7 +1599,11 @@ ecma_string_is_length (const ecma_string_t *string_p) /**< property name */
   return ecma_compare_ecma_string_to_magic_id (string_p, LIT_MAGIC_STRING_LENGTH);
 } /* ecma_string_is_length */
 
-
+/**
+ * Converts a property name into a string
+ *
+ * @return pointer to the converted ecma string
+ */
 static inline ecma_string_t * JERRY_ATTR_ALWAYS_INLINE
 ecma_property_to_string (ecma_property_t property, /**< property name type */
                          jmem_cpointer_t prop_name_cp) /**< property name compressed pointer */
@@ -1773,6 +1816,13 @@ ecma_compare_ecma_strings (const ecma_string_t *string1_p, /**< ecma-string */
     return false;
   }
 
+#ifndef CONFIG_DISABLE_ES2015_SYMBOL_BUILTIN
+  if (string1_container == ECMA_STRING_CONTAINER_SYMBOL)
+  {
+    return false;
+  }
+#endif /* !CONFIG_DISABLE_ES2015_SYMBOL_BUILTIN */
+
   if (string1_container >= ECMA_STRING_CONTAINER_UINT32_IN_DESC)
   {
     return string1_p->u.common_uint32_field == string2_p->u.common_uint32_field;
@@ -1914,7 +1964,7 @@ ecma_compare_ecma_strings_relational (const ecma_string_t *string1_p, /**< ecma-
                                               utf8_string2_size);
 } /* ecma_compare_ecma_strings_relational */
 
-/*
+/**
  * Special value to represent that no size is available.
  */
 #define ECMA_STRING_NO_ASCII_SIZE 0xffff
@@ -2052,7 +2102,7 @@ ecma_string_get_utf8_length (const ecma_string_t *string_p) /**< ecma-string */
         return (ecma_length_t) (long_string_p->long_utf8_string_length);
       }
 
-      return lit_get_utf8_length_of_cesu8_string ((const lit_utf8_byte_t *) (string_p + 1),
+      return lit_get_utf8_length_of_cesu8_string ((const lit_utf8_byte_t *) (long_string_p + 1),
                                                   (lit_utf8_size_t) string_p->u.long_utf8_string_size);
     }
     default:
@@ -2101,6 +2151,7 @@ ecma_string_get_size (const ecma_string_t *string_p) /**< ecma-string */
     default:
     {
       JERRY_ASSERT (ECMA_STRING_GET_CONTAINER (string_p) == ECMA_STRING_CONTAINER_MAGIC_STRING_EX);
+
       return lit_get_magic_string_ex_size (string_p->u.magic_string_ex_id);
     }
   }

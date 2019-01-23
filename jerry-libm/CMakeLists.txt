@@ -30,11 +30,14 @@ set(INCLUDE_LIBM "${CMAKE_CURRENT_SOURCE_DIR}/include")
 # Source directories
 file(GLOB SOURCE_LIBM *.c)
 
-add_library(${JERRY_LIBM_NAME} STATIC ${SOURCE_LIBM})
+add_library(${JERRY_LIBM_NAME} ${SOURCE_LIBM})
 set_property(TARGET ${JERRY_LIBM_NAME}
              PROPERTY COMPILE_FLAGS "${COMPILE_FLAGS_LIBM}")
 
 target_include_directories(${JERRY_LIBM_NAME} PUBLIC ${INCLUDE_LIBM})
 
+configure_file(libjerry-libm.pc.in libjerry-libm.pc @ONLY)
+
 install(TARGETS ${JERRY_LIBM_NAME} DESTINATION lib)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libjerry-libm.pc DESTINATION lib/pkgconfig)
 install(DIRECTORY ${INCLUDE_LIBM}/ DESTINATION include/jerry-libm)

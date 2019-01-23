@@ -16,7 +16,6 @@
 #include "ecma-alloc.h"
 #include "ecma-globals.h"
 #include "ecma-gc.h"
-#include "ecma-lcache.h"
 #include "jrt.h"
 #include "jmem.h"
 
@@ -51,36 +50,24 @@ JERRY_STATIC_ASSERT (sizeof (ecma_extended_object_t) - sizeof (ecma_object_t) <=
  */
 
 /**
- * Template of an allocation routine.
+ * Allocate memory for ecma-number
+ *
+ * @return pointer to allocated memory
  */
-#define ALLOC(ecma_type) ecma_ ## ecma_type ## _t * \
-  ecma_alloc_ ## ecma_type (void) \
-{ \
-  ecma_ ## ecma_type ## _t *ecma_type ## _p; \
-  ecma_type ## _p = (ecma_ ## ecma_type ## _t *) jmem_pools_alloc (sizeof (ecma_ ## ecma_type ## _t)); \
-  \
-  JERRY_ASSERT (ecma_type ## _p != NULL); \
-  \
-  return ecma_type ## _p; \
-}
+ecma_number_t *
+ecma_alloc_number (void)
+{
+  return (ecma_number_t *) jmem_pools_alloc (sizeof (ecma_number_t));
+} /* ecma_alloc_number */
 
 /**
- * Deallocation routine template
+ * Dealloc memory from an ecma-number
  */
-#define DEALLOC(ecma_type) void \
-  ecma_dealloc_ ## ecma_type (ecma_ ## ecma_type ## _t *ecma_type ## _p) \
-{ \
-  jmem_pools_free ((uint8_t *) ecma_type ## _p, sizeof (ecma_ ## ecma_type ## _t)); \
-}
-
-/**
- * Declaration of alloc/free routine for specified ecma-type.
- */
-#define DECLARE_ROUTINES_FOR(ecma_type) \
-  ALLOC (ecma_type) \
-  DEALLOC (ecma_type)
-
-DECLARE_ROUTINES_FOR (number)
+void
+ecma_dealloc_number (ecma_number_t *number_p) /**< number to be freed */
+{
+  jmem_pools_free ((uint8_t *) number_p, sizeof (ecma_number_t));
+} /* ecma_dealloc_number */
 
 /**
  * Allocate memory for ecma-object
@@ -195,35 +182,6 @@ ecma_dealloc_string_buffer (ecma_string_t *string_p, /**< string with data */
 
   jmem_heap_free_block (string_p, size);
 } /* ecma_dealloc_string_buffer */
-
-/**
- * Allocate memory for getter-setter pointer pair
- *
- * @return pointer to allocated memory
- */
-inline ecma_getter_setter_pointers_t * JERRY_ATTR_ALWAYS_INLINE
-ecma_alloc_getter_setter_pointers (void)
-{
-#ifdef JMEM_STATS
-  jmem_stats_allocate_property_bytes (sizeof (ecma_property_pair_t));
-#endif /* JMEM_STATS */
-
-  return (ecma_getter_setter_pointers_t *) jmem_pools_alloc (sizeof (ecma_getter_setter_pointers_t));
-} /* ecma_alloc_getter_setter_pointers */
-
-/**
- * Dealloc memory from getter-setter pointer pair
- */
-inline void JERRY_ATTR_ALWAYS_INLINE
-ecma_dealloc_getter_setter_pointers (ecma_getter_setter_pointers_t *getter_setter_pointers_p) /**< pointer pair
-                                                                                                * to be freed */
-{
-#ifdef JMEM_STATS
-  jmem_stats_free_property_bytes (sizeof (ecma_property_pair_t));
-#endif /* JMEM_STATS */
-
-  jmem_pools_free (getter_setter_pointers_p, sizeof (ecma_getter_setter_pointers_t));
-} /* ecma_dealloc_getter_setter_pointers */
 
 /**
  * Allocate memory for ecma-property pair

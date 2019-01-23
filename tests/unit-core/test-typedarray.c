@@ -81,25 +81,6 @@ assert_handler (const jerry_value_t func_obj_val, /**< function object */
 } /* assert_handler */
 
 /**
- * Checks whether global object has typedarray.
- */
-static bool
-typedarray_is_available (void)
-{
-  jerry_value_t global_obj_val = jerry_get_global_object ();
-  jerry_value_t prop_name = jerry_create_string ((const jerry_char_t *) "Int8Array");
-
-  jerry_value_t prop_value = jerry_has_property (global_obj_val, prop_name);
-  bool has_prop = jerry_get_boolean_value (prop_value);
-
-  jerry_release_value (global_obj_val);
-  jerry_release_value (prop_name);
-  jerry_release_value (prop_value);
-
-  return has_prop;
-} /* typedarray_is_available */
-
-/**
  * Do simple TypedArray property validation.
  */
 static void
@@ -265,14 +246,15 @@ test_typedarray_complex_creation (test_entry_t test_entries[], /**< test cases *
 
     register_js_value ("array", typedarray);
 
-    const char *eval_src_p = (
+    const jerry_char_t eval_src[] = TEST_STRING_LITERAL (
       "assert (array.length == expected_length,"
       "        'expected length: ' + expected_length + ' got: ' + array.length);"
       "assert (array.byteOffset == expected_offset);"
-      "array[0] = 0x11223344;");
-    jerry_value_t result = jerry_eval ((jerry_char_t *) eval_src_p,
-                                       strlen (eval_src_p),
-                                       true);
+      "array[0] = 0x11223344;"
+    );
+    jerry_value_t result = jerry_eval (eval_src,
+                                       sizeof (eval_src) - 1,
+                                       JERRY_PARSE_STRICT_MODE);
     TEST_ASSERT (!jerry_value_is_error (result));
     jerry_release_value (result);
 
@@ -423,7 +405,7 @@ main (void)
 {
   jerry_init (JERRY_INIT_EMPTY);
 
-  if (!typedarray_is_available ())
+  if (!jerry_is_feature_enabled (JERRY_FEATURE_TYPEDARRAY))
   {
     jerry_port_log (JERRY_LOG_LEVEL_ERROR, "TypedArray is disabled!\n");
     jerry_cleanup ();
@@ -489,16 +471,17 @@ main (void)
     }
 
     /* Check read and to write */
-    const char *eval_src_p = (
+    const jerry_char_t eval_src[] = TEST_STRING_LITERAL (
       "assert (array.length == expected_length, 'expected length: ' + expected_length + ' got: ' + array.length);"
       "for (var i = 0; i < array.length; i++)"
       "{"
       "  assert (array[i] == expected_value);"
       "  array[i] = i;"
-      "};");
-    jerry_value_t result = jerry_eval ((jerry_char_t *) eval_src_p,
-                                       strlen (eval_src_p),
-                                       true);
+      "};"
+    );
+    jerry_value_t result = jerry_eval (eval_src,
+                                       sizeof (eval_src) - 1,
+                                       JERRY_PARSE_STRICT_MODE);
 
     TEST_ASSERT (!jerry_value_is_error (result));
     jerry_release_value (result);
@@ -589,4 +572,6 @@ main (void)
   }
 
   jerry_cleanup ();
+
+  return 0;
 } /* main */

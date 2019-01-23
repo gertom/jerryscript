@@ -24,7 +24,7 @@ set(COMPILE_FLAGS_DOCTEST "-Wno-unused-parameter -Wno-unused-function -Wno-unuse
 # file names that will be generated. This allows the definition of proper
 # dependencies between the MarkDown files and the generated sources.
 execute_process(
-  COMMAND ${GEN_DOCTEST} --dry -d ${CMAKE_CURRENT_SOURCE_DIR} ${DOC_FILES}
+  COMMAND ${GEN_DOCTEST} --dry -d ${CMAKE_CURRENT_BINARY_DIR} ${DOC_FILES}
   OUTPUT_VARIABLE DOCTEST_OUTPUT
   RESULT_VARIABLE GEN_DOCTEST_RESULT
 )
@@ -53,16 +53,21 @@ endforeach()
 # Add custom command to run doctest generator if any of the MarkDown sources
 # changes.
 add_custom_command(
-  COMMAND ${GEN_DOCTEST} -d ${CMAKE_CURRENT_SOURCE_DIR} ${DOC_FILES}
+  COMMAND ${GEN_DOCTEST} -d ${CMAKE_CURRENT_BINARY_DIR} ${DOC_FILES}
   DEPENDS ${GEN_DOCTEST} ${DOC_FILES}
   OUTPUT ${DOCTEST_COMPILE} ${DOCTEST_LINK} ${DOCTEST_RUN}
   COMMENT "Generating doctests"
 )
 
+# Add custom target to trigger the custom command above. Targets below can/must
+# depend on this one so that the custom command gets executed only once.
+add_custom_target(all-doc-files DEPENDS ${DOCTEST_COMPILE} ${DOCTEST_LINK} ${DOCTEST_RUN})
+
 # Process compile-only doctests: add them to a dummy library
 # (named libcompile-doc-tests.a) to trigger compilation.
 if(NOT ("${DOCTEST_COMPILE}" STREQUAL ""))
-  add_library(compile-doc-tests STATIC ${DOCTEST_COMPILE})
+  add_library(compile-doc-tests ${DOCTEST_COMPILE})
+  add_dependencies(compile-doc-tests all-doc-files)
   target_link_libraries(compile-doc-tests jerry-ext jerry-core jerry-port-default-minimal)
   set_property(TARGET compile-doc-tests APPEND_STRING PROPERTY COMPILE_FLAGS "${COMPILE_FLAGS_DOCTEST}")
 endif()
@@ -74,8 +79,10 @@ macro(doctest_add_executables NAME_PREFIX)
     set(TARGET_NAME ${NAME_PREFIX}-${TARGET_NAME})
 
     add_executable(${TARGET_NAME} ${DOCTEST_NAME})
+    add_dependencies(${TARGET_NAME} all-doc-files)
     set_property(TARGET ${TARGET_NAME} APPEND_STRING PROPERTY COMPILE_FLAGS "${COMPILE_FLAGS_DOCTEST}")
     set_property(TARGET ${TARGET_NAME} PROPERTY LINK_FLAGS "${LINKER_FLAGS_COMMON}")
+    set_property(TARGET ${TARGET_NAME} PROPERTY RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests")
     target_link_libraries(${TARGET_NAME} jerry-ext jerry-core jerry-port-default-minimal)
   endforeach()
 endmacro()

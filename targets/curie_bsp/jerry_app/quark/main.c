@@ -46,7 +46,7 @@ void jerry_resolve_error (jerry_value_t ret_value)
 {
   if (jerry_value_is_error (ret_value))
   {
-    jerry_value_clear_error_flag (&ret_value);
+    ret_value = jerry_get_value_from_error (ret_value, true);
     jerry_value_t err_str_val = jerry_value_to_string (ret_value);
     jerry_size_t err_str_size = jerry_get_string_size (err_str_val);
     jerry_char_t *err_str_buf = (jerry_char_t *) balloc (err_str_size, NULL);
@@ -111,7 +111,7 @@ void eval_jerry_script (int argc, char *argv[], struct tcmd_handler_ctx *ctx)
     }
     *p = '\0';
 
-    jerry_value_t eval_ret = jerry_eval (buffer, str_total_length - 1, false);
+    jerry_value_t eval_ret = jerry_eval (buffer, str_total_length - 1, JERRY_PARSE_NO_OPTS);
 
     if (jerry_value_is_error (eval_ret))
     {
