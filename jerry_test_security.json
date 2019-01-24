@@ -2,397 +2,1324 @@
   {
     "issue": 2719,
     "rev_bug": "c23cf417",
-    "testcase": "JSON.stringify(URIError, valueOf, new String('abc\\u2040\\u2030cba'));\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-m32 --profile=es2015-subset --system-allocator=on --error-messages=on --logging=on\r\n"
+    "testcase": "JSON.stringify(URIError, valueOf, new String('abc\\\\u2040\\\\u2030cba'));\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-m32 --profile=es2015-subset --system-allocator=on --error-messages=on --logging=on"
   },
   {
     "issue": 2700,
     "rev_bug": "adb80c20",
     "testcase": "Promise.race(new Array(0xfffffffe)); \r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-m32 --profile=es2015-subset --system-allocator=on --error-messages=on --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-m32 --profile=es2015-subset --system-allocator=on --error-messages=on --logging=on"
+  },
+  {
+    "issue": 2698,
+    "rev_bug": "93ec2266",
+    "testcase": "Uint8Array.prototype.join.call([ \"2015-01-01T00:\", { toString : '2,1,3,4,0' } ], [ ]) \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-m32 --profile=es2015-subset --system-allocator=on --error-messages=on --logging=on"
   },
   {
     "issue": 2693,
     "rev_bug": "93ec2266",
     "testcase": "Object.defineProperty(Array.prototype, 0, { get : function ( ) {throw $} });\r\nPromise.all([,]);\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2667,
     "rev_bug": "b69f3fd0",
     "testcase": "new Strin = class extends f ()() {\r\n    constructor () {\r\n        var C = class extends$B {}\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2666,
     "rev_bug": "b69f3fd0",
     "testcase": "class C {\r\n    static D () {}\r\n}\r\n\r\nclass D extends C {}\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2660,
     "rev_bug": "ec142f5f",
-    "testcase": "new RegExp(\"\\{{91[06,456}\");\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+    "testcase": "new RegExp(\"\\\\{{91[06,456}\");\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
+  },
+  {
+    "issue": 2659,
+    "rev_bug": "ec142f5f",
+    "testcase": "`eval`(\"eval ('super (a, b, c)')\");\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2658,
     "rev_bug": "ec142f5f",
     "testcase": "var A = class extends null {}\r\nnew A;\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2657,
     "rev_bug": "ec142f5f",
     "testcase": "var Mixin1 = (superclass) => class extends super.lass {};\r\nvar Mixin2 = (superclass) => class extends superclass {};\r\nclass S {}\r\nclass C extends Mixin1 (Mixin2 (S)) {}\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2656,
     "rev_bug": "ec142f5f",
     "testcase": "function testcase ( ) { \r\n    obj.hasOwnProperty(\"arguments\") ; \r\n} \r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2654,
     "rev_bug": "ec142f5f",
     "testcase": "--null.static ? this : [ , ] instanceof true; \r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2653,
     "rev_bug": "ec142f5f",
     "testcase": "Object.defineProperty (Object.prototype, \"\" , { 'set' : function ( ) { throw new ReferenceError ( \"foo\" ) ; } } ) ; \r\nJSON.stringify( )\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
+  },
+  {
+    "issue": 2652,
+    "rev_bug": "ec142f5f",
+    "testcase": "Object.defineProperty(Object.prototype,\"\",{'set':function(){throw ReferenceError(\"\")}});\r\nprint(JSON.stringify())\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2603,
     "rev_bug": "704eb45c",
     "testcase": "Object.defineProperty( Array.prototype, 0, { set : function ( ) { throw \"MyError\" } } ); \r\nPromise.all( [ .86456 ] ) ;\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2602,
     "rev_bug": "704eb45c",
     "testcase": "Object.defineProperty ( Array.prototype , 0 , { set : function ( ) { throw \"MyError\" } } ) ; \r\nPromise.all ( [ \"2015-01-01\" ] ) ; \r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2544,
     "rev_bug": "7717d2ee",
     "testcase": "Object.defineProperty(Array.prototype, 0, { get : function ( ) { throw $; } } ) ; \r\nPromise.race([, this]).then(Error) \r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on --profile=es2015-subset --logging=on"
+  },
+  {
+    "issue": 2541,
+    "rev_bug": "7717d2ee",
+    "testcase": "print (Promise.race( [ , , , , , , , , , , , , , , , this , , this , , , , , , { } , function() {} ] ).then ( function() { print ( 'The promise should be rejected' ) ; \r\n} , function ( id_0 ) { TypeError.id_1 ( escape, URIError ) ; \r\n} ).then ( -Math.PI  ) < +RangeError ) ; \r\nObject.defineProperty ( TypeError , \"foo2\", \r\n\t\t\t\t{ get : Math , \r\n\t\t\t\t  '' : gc , \r\n\t\t\t\t  enumerable : true , \r\n\t\t\t\t  configurable : false } ) ; \r\n\r\nif ( undefined.toString() != \"3.5,2.5,1.5\" ) throw \"Error: bad result: \" + print ( RangeError ) ; \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2528,
     "rev_bug": "2d83d8ed",
     "testcase": "for ( /a/ in yield => { } , yield => { } , yield => { } ) throw 1\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on --profile=es2015-subset --logging=on"
+  },
+  {
+    "issue": 2506,
+    "rev_bug": "d270f82e",
+    "testcase": "print(Promise.race([,,,,,,,,,,,,,,,this,,this,,,,,,{ },function(){}])\r\n\t.then(function(){$('The promise should be rejected')},function(){$.id_1(escape,URIError)})\r\n\t.then(-Math.PI/0)<+RangeError);Date.UTC(\"\",0);\r\nnew Date( ).getHours(-{ });\r\n$.$(\"arg1,arg2,arg3\",\"arg1,arg2\",$,$);\r\n$.setYear\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on --profile=es2015-subset --logging=on"
+  },
+  {
+    "issue": 2494,
+    "rev_bug": "300e40ba",
+    "testcase": "Object.defineProperty(Object.prototype, \"\", {});\r\nJSON.stringify()\r\n",
+    "bld_cmd": "tools/build.py --debug --logging=on"
   },
   {
     "issue": 2490,
     "rev_bug": "300e40ba",
     "testcase": "Object.defineProperty(Object.prototype, 6, {});\r\nPromise.all([0]);\r\n",
-    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset\r\n"
+    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset"
   },
   {
     "issue": 2489,
     "rev_bug": "300e40ba",
     "testcase": "Object.defineProperty(Object.prototype, 0, {'get': function() { throw $ }});\r\nPromise.all();\r\n",
-    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset\r\n"
+    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset"
   },
   {
     "issue": 2488,
     "rev_bug": "300e40ba",
     "testcase": "Object.defineProperty(Array.prototype, 0, {set: function() {throw \"MyError\"}});\r\nPromise.all([0])\r\n",
-    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset\r\n"
+    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset"
   },
   {
     "issue": 2487,
     "rev_bug": "300e40ba",
     "testcase": "Object.defineProperty(Array.prototype, 0, {set: function() {var $ = $()}});\r\nPromise.all([0])\r\n",
-    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset\r\n"
+    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset"
   },
   {
     "issue": 2486,
     "rev_bug": "300e40ba",
     "testcase": "Object.setPrototypeOf(Math, Int32Array);\r\nfor (var i = 0; i < 200; i++) { \r\n    Promise.race([, [,] % {}]).then(); \r\n}\r\n\r\n",
-    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset\r\n"
+    "bld_cmd": "tools/build.py --debug --logging=on --profile=es2015-subset"
   },
   {
     "issue": 2468,
     "rev_bug": "29e7330b",
     "testcase": "Object.prototype[1] = 0; \r\nPromise.race([]);\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address \\\r\n--compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer \\\r\n--compile-flag=-fno-common --compile-flag=-g --jerry-libc=off \\\r\n--strip=off --system-allocator=on \\\r\n--linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2465,
     "rev_bug": "29e7330b",
     "testcase": "Object.prototype [ 1 ] = 0;  \r\nPromise.all( )\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address \\\r\n--compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer \\\r\n--compile-flag=-fno-common --compile-flag=-g --jerry-libc=off \\\r\n--strip=off --system-allocator=on \\\r\n--linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset --logging=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2453,
     "rev_bug": "1ac2903d",
-    "testcase": "var src = \"\";\r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += 4 + i + \": a += a += a; break; \" ; \r\n    src += \"\\𝔺\\\r\n\\ \" ; \r\nprint ( src ) ;\r\n \r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address\r\n--compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer\r\n--compile-flag=-fno-common --compile-flag=-g --logging=on\r\n--strip=off --system-allocator=on\r\n--linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+    "testcase": "var src = \"\";\r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += 4 + i + \": a += a += a; break; \" ; \r\n    src += \"\\\\\U0001d53a\\\\\r\n\\\\\u2029\" ; \r\nprint ( src ) ;\r\n \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --logging=on --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset"
   },
   {
     "issue": 2452,
     "rev_bug": "1ac2903d",
-    "testcase": "var src = \"\";\r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += \"\\udc00%f0%90%80%80\\udc00\";\r\nsrc += \"} }\" ; \r\nprint ( src ) ;\r\n \r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address\r\n--compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer\r\n--compile-flag=-fno-common --compile-flag=-g --logging=on\r\n--strip=off --system-allocator=on\r\n--linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+    "testcase": "var src = \"\";\r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += \"\\\\udc00%f0%90%80%80\\\\udc00\";\r\nsrc += \"} }\" ; \r\nprint ( src ) ;\r\n \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --logging=on --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset"
   },
   {
     "issue": 2451,
     "rev_bug": "1ac2903d",
-    "testcase": "var src = \"var a = 0; while(a) { switch(a) {\" ; \r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += \"-Infinity\" + i + \"\\u00a0\\u00a01.2e3\" ; \r\nsrc += \"\\udc00%f0%90%80%80\\udc00\" ; \r\nprint ( src ) ; \r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address \\\r\n--compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer \\\r\n--compile-flag=-fno-common --compile-flag=-g \\\r\n--strip=off --system-allocator=on \\\r\n--linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset --logging=on\r\n"
+    "testcase": "var src = \"var a = 0; while(a) { switch(a) {\" ; \r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += \"-Infinity\" + i + \"\\\\u00a0\\\\u00a01.2e3\" ; \r\nsrc += \"\\\\udc00%f0%90%80%80\\\\udc00\" ; \r\nprint ( src ) ; \r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset --logging=on"
   },
   {
     "issue": 2386,
     "rev_bug": "8b8bced6",
     "testcase": "Math in Number\r\n",
-    "bld_cmd": "CC=clang ./tools/build.py --clean --debug --compile-flag=-fsanitize=address \\\r\n        --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer \\\r\n        --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off \\\r\n        --strip=off --system-allocator=on \\\r\n        --linker-flag=-fuse-ld=gold --error-messages=on --lto=off\r\n(Can be reproduced with GCC, too.)\r\n"
+    "bld_cmd": "CC=clang ./tools/build.py --clean --debug --compile-flag=-fsanitize=address         --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer         --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off         --strip=off --system-allocator=on         --linker-flag=-fuse-ld=gold --error-messages=on --lto=off (Can be reproduced with GCC, too.)"
   },
   {
     "issue": 2384,
     "rev_bug": "8b8bced6",
     "testcase": "\"[]{83}\".match(\"(?=){12,8}\")\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug"
+  },
+  {
+    "issue": 2383,
+    "rev_bug": "8b8bced6",
+    "testcase": "print(JSON.stringify([\r\n\t{\"dddddd\":\"ccccccccccccc\",\"bbbbb\":225,\"vvvvv\":{\"aaaaaaa\":\"call\",\"ffffffff\":[\"w2\\\\u1D306A\"],\"fz_return\":0}},\r\n\t{\"dddddd\":\"ccccccccccccc\",\"bbbbb\":225,\"vvvvv\":{\"aaaaaaa\":\"call\",\"ffffffff\":[\"\\\\uD834\\\\uDF06\"],\"fz_return\":0}},\r\n\t{\"vvvvv\":{\"aaaaaaa\":\"call\",\"fffffffff\":[\"D\"],\"fz_return\":0}}]))\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
     "issue": 2344,
     "rev_bug": "872825fb",
-    "testcase": "new RegExp().compile(\"\\\\1\\\\\");\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address \\\r\n        --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer \\\r\n        --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off \\\r\n        --static-link=off --strip=off --system-allocator=on \\\r\n        --linker-flag=-fuse-ld=gold --error-messages=on\r\n"
+    "testcase": "new RegExp().compile(\"\\\\\\\\1\\\\\\\\\");\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address         --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer         --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off         --static-link=off --strip=off --system-allocator=on         --linker-flag=-fuse-ld=gold --error-messages=on"
   },
   {
     "issue": 2258,
     "rev_bug": "79289714",
     "testcase": "JSON.stringify(10, Array)\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset"
   },
   {
     "issue": 2204,
     "rev_bug": "d7991ae5",
-    "testcase": "new RegExp(\"\\{{91406,456}\");\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+    "testcase": "new RegExp(\"\\\\{{91406,456}\");\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
     "issue": 2198,
     "rev_bug": "e8608707",
     "testcase": "var id_0 = Object.prototype.toString ; \r\nObject.prototype.toString = function ( ) { return \"SHIFTED\" } ; \r\nRegExp ( '#1: __str = new String({}); typeof __str === \"object\". Actual: typeof __str ===');\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
     "issue": 2192,
     "rev_bug": "918eb22a",
-    "testcase": "JSON.parse('\"' + '\\\\u');\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+    "testcase": "JSON.parse('\"' + '\\\\\\\\u');\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset"
   },
   {
     "issue": 2190,
     "rev_bug": "918eb22a",
     "testcase": "/(?:(?=x)){1000}xyz/.exec('xyz'); \r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset"
   },
   {
     "issue": 2182,
     "rev_bug": "918eb22a",
     "testcase": "function applyTest ( x , y , z ) { } \r\napplyTest.apply('mythis' , { length : 0x40000001 } );\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset"
   },
   {
     "issue": 2181,
     "rev_bug": "918eb22a",
     "testcase": "var arrayBuffer = new ArrayBuffer(8); \r\nvar start = { toString : function ( ) { throw \"inend\" ; } }; \r\nvar end = { valueOf : function ( ) { } }; \r\narrayBuffer.slice(start, end); \r\n \r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset"
   },
   {
     "issue": 2180,
     "rev_bug": "918eb22a",
-    "testcase": "JSON.parse('\"' + '\\\\');\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset\r\n"
+    "testcase": "JSON.parse('\"' + '\\\\\\\\');\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset"
   },
   {
     "issue": 2143,
     "rev_bug": "90f2473f",
     "testcase": "var a = new Uint8Array(2);\r\na[0] = { valueOf : function() { throw \"intoint\" ; } };\r\n\r\n",
-    "bld_cmd": "tools/build.py --clean --debug --profile=es2015-subset\r\n"
+    "bld_cmd": "tools/build.py --clean --debug --profile=es2015-subset"
   },
   {
     "issue": 2111,
     "rev_bug": "7692aa9d",
     "testcase": "var value = {};\r\nvar poisonedThen = Object.defineProperty({}, 'then', {\r\n  get: function() {\r\n    throw value;\r\n  }\r\n});\r\nvar promise = new Promise(function(resolve) {\r\n  resolve(poisonedThen);\r\n});\r\n\r\n",
-    "bld_cmd": "tools/build.py --clean --debug --profile=es2015-subset\r\n"
+    "bld_cmd": "tools/build.py --clean --debug --profile=es2015-subset"
   },
   {
     "issue": 2110,
     "rev_bug": "7692aa9d",
     "testcase": "var arrowFn = () => {};\r\narrowFn.hasOwnProperty('caller');\r\n",
-    "bld_cmd": "tools/build.py --clean --debug --profile=es2015-subset\r\n"
+    "bld_cmd": "tools/build.py --clean --debug --profile=es2015-subset"
   },
   {
     "issue": 2108,
     "rev_bug": "7692aa9d",
     "testcase": "print(new Number(8e-9).toFixed(20));\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
     "issue": 2107,
     "rev_bug": "7692aa9d",
     "testcase": "\r\nvar thenableWithError = {\r\n    then: function() { throw new Error(\"\") }\r\n}\r\nfunction executor(resolve) {\r\n    resolve(thenableWithError)\r\n}\r\nnew Promise(executor).a()\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset"
   },
   {
     "issue": 2106,
     "rev_bug": "7692aa9d",
     "testcase": "new Float32Array({ length: 0x40000001 })\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset"
   },
   {
     "issue": 2105,
     "rev_bug": "7692aa9d",
     "testcase": "\r\nObject.freeze (this)\r\n{\r\neval('{ function boo() {} }')\r\n}\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
     "issue": 2104,
     "rev_bug": "7692aa9d",
     "testcase": "var value;\r\nObject.defineProperty (Array.prototype, 'then', {get: function() { throw$ } })\r\npromise = Promise.all ([])\r\npromise.then (\r\n    function() {},\r\n    function(val) {\r\n        if (val !== value) ;\r\n    })\r\n\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset"
+  },
+  {
+    "issue": 2094,
+    "rev_bug": "6b1ed6e0",
+    "testcase": "function a() {\r\n",
+    "bld_cmd": "CC=clang ./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --jerry-libc=off --static-link=off --lto=off --error-messages=on"
   },
   {
     "issue": 2073,
     "rev_bug": "bdcd2d8",
-    "testcase": "Date.parse(\"2015-01-01T01߄'a': 1}:01F\");\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+    "testcase": "Date.parse(\"2015-01-01T01\u07c4'a': 1}:01F\");\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
     "issue": 2069,
     "rev_bug": "678fcb20",
     "testcase": "null[1] = 'abcd'; \r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on"
   },
   {
     "issue": 2065,
     "rev_bug": "d9cc3fd",
     "testcase": "var a = Promise.prototype;\r\nfor (var i = 0; i < 200; i++)\r\n{\r\n    Promise.race([a]).then();\r\n}\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug  --profile=es2015-subset\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug  --profile=es2015-subset"
   },
   {
     "issue": 2058,
     "rev_bug": "d7c710d",
     "testcase": "/?:/\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug"
   },
+,
   {
     "issue": 1997,
     "rev_bug": "7905422",
     "testcase": "var a = Promise.resolve();\r\nfor (;;)\r\n    Promise.race([a]).then()\r\n$\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset"
   },
   {
     "issue": 1996,
     "rev_bug": "7905422",
     "testcase": "new Promise(function(f) {\r\n    f.apply()\r\n})\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset"
   },
   {
     "issue": 1995,
     "rev_bug": "7525006",
     "testcase": "Promise.race([\"\"]).$()\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --jerry-libc=off\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --jerry-libc=off"
   },
   {
     "issue": 1993,
     "rev_bug": "ce18704",
     "testcase": "parseFloat(Number.MAX_VALUE).toFixed(5);\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
     "issue": 1990,
     "rev_bug": "0ef2418",
-    "testcase": "unescape(\"%f׊nd\")\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+    "testcase": "unescape(\"%f\u05cand\")\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
     "issue": 1936,
     "rev_bug": "1526bcc",
     "testcase": "Object.defineProperties(constructor.isExtensible, {a: Object.getOwnPropertyDescriptor(Uint8ClampedArray, \"length\")})\r\nnew Int32Array(new ArrayBuffer(), undefined, Date.now())\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --compile-flag=-m32 --system-allocator=on --jerry-libc=off --error-messages=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --compile-flag=-m32 --system-allocator=on --jerry-libc=off --error-messages=on"
   },
   {
     "issue": 1918,
     "rev_bug": "3d744c9",
     "testcase": "\r\nthrow $ = {name: function () {}}\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --profile=es2015-subset --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --profile=es2015-subset --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on"
   },
   {
     "issue": 1917,
     "rev_bug": "3d744c9",
     "testcase": "\r\n'foobar'.replace(/(ob)/g, '$0')\r\n\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --profile=es2015-subset --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --profile=es2015-subset --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on"
   },
   {
     "issue": 1881,
     "rev_bug": "905cd70",
     "testcase": "new Promise(isFinite.toString).catch(Promise.prototype.then)\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --profile=es2015-subset --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold  --error-messages=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --profile=es2015-subset --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold  --error-messages=on"
   },
   {
     "issue": 1873,
     "rev_bug": "a9e7dd7",
     "testcase": "if (function() {\r\n    while ({a: a,\r\n            get a() {}\r\n           })\r\n        continue;\r\n    })\r\n    var a;\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
     "issue": 1871,
     "rev_bug": "a9e7dd7",
-    "testcase": "// in hex:\r\n\\xf0\\x90\\xae\\xa9\\xe0\\xad\\x9f\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug\r\n"
+    "testcase": "// in hex:\r\n\\\\xf0\\\\x90\\\\xae\\\\xa9\\\\xe0\\\\xad\\\\x9f\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
     "issue": 1861,
     "rev_bug": "b51b682",
-    "testcase": "javascript\n{  ( $\n&& $ != $ instanceof [ $ , /[\\￐]\\🀬/ ]\n? $ : $\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on\n"
+    "testcase": "{  ( $\n&& $ != $ instanceof [ $ , /[\\\\\uffd0]\\\\\U0001f02c/ ]\n? $ : $\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on"
   },
   {
     "issue": 1831,
     "rev_bug": "31cd3b8",
-    "testcase": "/኱𞻲/‌ஃ︠﹍\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on\r\n"
+    "testcase": "/\u12b1\U0001eef2/\u200c\u0b83\ufe20\ufe4d\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on"
   },
   {
     "issue": 1830,
     "rev_bug": "31cd3b8",
-    "testcase": "/[\\꧿]ౘ/\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on\r\n"
+    "testcase": "/[\\\\\ua9ff]\u0c58/\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on"
   },
   {
     "issue": 1829,
     "rev_bug": "31cd3b8",
     "testcase": "for ({get 10() {} };;)\r\n    break;\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --error-messages=on"
+  },
+  {
+    "issue": 1765,
+    "rev_bug": "67c641e",
+    "testcase": "Function()(Promise.prototype.toLocaleString())\r\n",
+    "bld_typ": "./tools/build.py --clean --debug --profile=es2015-subset"
   },
   {
     "issue": 1763,
     "rev_bug": "ea44b3b",
     "testcase": "\r\nnew Promise(Math.max.propertyIsEnumerable.toString).then()\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset"
   },
   {
     "issue": 1701,
     "rev_bug": "3ff9a7d",
     "testcase": "Number(982).toPrecision(1)\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on"
+  },
+  {
+    "issue": 1671,
+    "rev_bug": "4420401",
+    "testcase": "Array.prototype.splice(0, 0, 0, \"\")\r\nArray.prototype.shift()\r\nArray.prototype.push(\"\", 0, 1)\r\nArray.prototype.sort(JSON.parse)\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
     "issue": 1670,
     "rev_bug": "4420401",
     "testcase": "Int16Array.from();\r\n",
-    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --compile-flag=-m32 --system-allocator=on --jerry-libc=off --error-messages=on\r\n"
+    "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --compile-flag=-m32 --system-allocator=on --jerry-libc=off --error-messages=on"
+  },
+  {
+    "issue": 1657,
+    "rev_bug": "b140158",
+    "testcase": "new Date(-565224, 1)\r\n",
+    "bld_cmd": "./tools/build.py --debug --clean"
+  },
+  {
+    "issue": 1641,
+    "rev_bug": "f780f2b",
+    "testcase": "\r\nnew String(0).split(RegExp.prototype)\r\n",
+    "bld_cmd": "./tools/build.py --debug --clean"
+  },
+  {
+    "issue": 1636,
+    "rev_bug": "92f74f3",
+    "testcase": "var seal = seal < 'e'\r\n",
+    "bld_cmd": "./tools/build.py --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold"
+  },
+  {
+    "issue": 1634,
+    "rev_bug": "92f74f3",
+    "testcase": "65535.9.toString(3)\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold"
+  },
+  {
+    "issue": 1633,
+    "rev_bug": "92f74f3",
+    "testcase": "\r\ndelete new Uint16Array()[0]\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-m32 --system-allocator=on --jerry-libc=off"
+  },
+  {
+    "issue": 1624,
+    "rev_bug": "3de72af",
+    "testcase": "with (print) new function (a, a) {\r\n    var init;\r\n    init()\r\n}\r\n\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-m32 --system-allocator=on --jerry-libc=off"
+  },
+  {
+    "issue": 1622,
+    "rev_bug": "3de72af",
+    "testcase": "for (var a in new Int8Array(123));\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-m32 --system-allocator=on --jerry-libc=off --profile=es2015-subset"
+  },
+  {
+    "issue": 1621,
+    "rev_bug": "3de72af",
+    "testcase": "\r\nvar eval = eval.bind()\r\neval(Math.cos())\r\n",
+    "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-m32 --system-allocator=on --jerry-libc=off"
+  },
+  {
+    "issue": 1616,
+    "rev_bug": "62a581f",
+    "testcase": "var a = new ArrayBuffer (0xfffffffe)\r\n",
+    "bld_cmd": "tools/build.py --clean --debug --profile=es2015-subset --compile-flag=-m32 --system-allocator=on --jerry-libc=off"
+  },
+  {
+    "issue": 1615,
+    "rev_bug": "62a581f",
+    "testcase": "var a = a (a === a * a (0x10000) ) && eval == 0x10000()\r\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1613,
+    "rev_bug": "62a581f",
+    "testcase": "new Int16Array(Float32Array.prototype)\r\n",
+    "bld_cmd": "tools/build.py --clean --debug --profile=es2015-subset --compile-flag=-m32 --system-allocator=on --jerry-libc=off"
+  },
+  {
+    "issue": 1598,
+    "rev_bug": "33138c0",
+    "testcase": "for (var a;;\r\n    function() {\r\n        with (a) {\r\n            break c\r\n        }\r\n    }\r\n)\r\n\r\ntry {}\r\nfinally {\r\n    break\r\n}\r\n\r\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1597,
+    "rev_bug": "33138c0",
+    "testcase": "\r\ntry\r\n{\r\n    a\r\n} catch (a)\r\n{\r\n    var v_1 = [a, 1, a, 1, 1, a, 1, a,\r\n               1, a, 1, a, 1, a, 1, 1, a, 1, a, 1, a, 1, a, 1,\r\n               a, 1, a, 1, a, 1, a, 1, 1, a, 1, 1, a, 1, a, 1,\r\n               a, 1, a, 1, a, 1, a, 1, a, 1, 1, a, 1, 1, a, 1,\r\n               1, a, 1, a, 1, a, 1, a, a, 1, a, 1, a, 1, a, 1,\r\n               a, 1, 1, a, 1, a, 1, a, 1, a, 1, 1, a, 1, a, 1,\r\n               1, a, 1, a, 1, 1, a, 1, a, 1, a, 1, a, 1, 1, a,\r\n               1, 1, a, 1, a, 1, a, 1, a, 1, a, 1, a, 1, 1, a]\r\n    a()\r\n}\r\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1556,
+    "rev_bug": "77ab2c7",
+    "testcase": "var f = \"function inner(a) {\"\r\nbuildTree(53).traverse (function(node) {\r\n    f += \"var t\" + node.number + \" = 1;\"\r\n})\r\nf += \"}\"\r\n\r\nvar $ = eval(f)\r\nfunction buildTree(depth, branches, numberContainer) {\r\n    function TreeNode(number) {\r\n        this.number = number\r\n    }\r\n    TreeNode.prototype .traverse = function (visit) {\r\n        visit(this)\r\n        if(this.left)\r\n            this.left .traverse (visit)\r\n        if(this.right)\r\n            this.right .traverse (visit)\r\n    }\r\n    if(!numberContainer)\r\n        numberContainer = [0]\r\n    var node = new TreeNode(numberContainer[$] ++)\r\n    if(--depth !== $) {\r\n        var branch = branches !== 0\r\n        if(branch)\r\n            $ >>= $\r\n        node.left = buildTree(depth, branches, numberContainer)\r\n        if(branch)\r\n            node.right = buildTree(depth, $, numberContainer)\r\n    }\r\n    return node\r\n}\r\n\r\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1555,
+    "rev_bug": "77ab2c7",
+    "testcase": "var src = \"while($) { switch($) {\";\r\nfor (var i = 0; i < 2270; i++)\r\n    src += \"case \" + i + \": if (n[\" + i + \"] ++ > 0) check ('a string \" + i + \"'); break;\"\r\nsrc += \"}}\"\r\neval(src)",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1552,
+    "rev_bug": "7b59c80",
+    "testcase": "function createHashTable() {\r\n    var o = new Array()\r\n    var elements = new Array()\r\n    o.elementHash = function (i) {\r\n        return Math.abs (i) & 31\r\n    }\r\n    o.add = function (i) {\r\n        var elementIndex = this.elementHash (i)\r\n        if(elements[elementIndex] !== undefined) {\r\n            for(var j = elementIndex; j < elementIndex + 4 && j < 32; ++j) {\r\n                delete this[\"h\" + elements[j]]\r\n            }\r\n        }\r\n        elements[elementIndex] = i\r\n        this[\"h\" + i] = i\r\n    }\r\n    return o\r\n}\r\nfunction useAsHashTable() {\r\n    for(var $;;) {\r\n        for(var j;; j = (j + 1) | $)\r\n           o.add (j)\r\n    }\r\n}\r\nvar o = createHashTable()\r\nuseAsHashTable()\r\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1551,
+    "rev_bug": "7b59c80",
+    "testcase": "with open('test.js', 'wb') as f:\r\n    f.write(b\"\\\\xef\\\\xbb\\\\xbf\")\ufeff\r\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1550,
+    "rev_bug": "7b59c80",
+    "testcase": "do break; while $\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1549,
+    "rev_bug": "7b59c80",
+    "testcase": "with open('test.js', 'wb') as f:\r\n    f.write(b\"function $() {\\\\\r\n$ = { \\\\\r\n$:$, $: ($ ($, ($ * ($[(($ + '(Cq\\\\xd4c=V\\\\xcc'.$ ())) & $] + $))))\\\\\r\n}\\\\\r\n}\")\r\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1547,
+    "rev_bug": "8b5d645",
+    "testcase": "\ntry { new (this.Date)(this.Number .MAX_VALUE, this.Number .MAX_VALUE) .$ () } catch($){}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1546,
+    "rev_bug": "7b59c80",
+    "testcase": "try { this.String .prototype .split (this.RegExp .prototype) } catch($){}\r\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1545,
+    "rev_bug": "7b59c80",
+    "testcase": "var fz = [{\"a\": []}];\r\n\r\nvar fn = function () {\r\n    return function(){};\r\n}\r\n\r\nfor (var i = 0;; i++) {\r\n    if (!fz[i])\r\n        break;\r\n    fn();\r\n}\r\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1389,
+    "rev_bug": "9915307",
+    "testcase": "function x(){}[280,1045,523,613,892,802,722,357,766,843,1015,624,260,418,a5,261,376,306(n(\"o\")).a,583,585,586,587,569,589,466,533,745,1012,633,809,368,1245,513,607,g='r',516(\"\",'c'),981,tf(f(b()))=z instanceof 636,758,1004,782,661,455,839,801,630([]=c),bg[0],634,637,638,1099,644,645,294,635,987,650,259('t'),514,290,658,967,725,710,662,667,668,989,672,326,673,343,679(ab(-0)+886),436,739(a=\"te\"),375,826,485,690,785[872],446,904['u',\"V\",824],704,705,706,593,[](.4),711,304,687,507,723,666,321,497,911,317,730,966,292,500,591,818,a1(nc).s,740,746,747,748,749,363,520,820,333,685,827,831,834,286,693,403,840,841,288,367,392,848,881,592,695,887,912,890,258,893,894,828,273,400,462,808,b8,285,h,856,868,385,913,914,915,916,303,465,919,920,921,922,415,924,391,b4,632,930,931,932,933,934,935,957,331,871,515,w,e,o,627,732,955,677,947,1024,508,501,394,961,'e',296,964,973,c9,cl.l,289,975(y(\"M\")),977,310,979,652,884,473,983,554,988,270,640,991,293,691,962,703,287((cn(t))=u),\"f\",448,1006,665,788,470,698,1017,855,1020,1021];{}l(i.p(564)=r)\n",
+    "bld_typ": "DEFAULT"
+  },
+  {
+    "issue": 1387,
+    "rev_bug": "9915307",
+    "testcase": "'use strict'\nfunction undefined () {}\n",
+    "bld_typ": "DEFAULT"
+  },
+  {
+    "issue": 1196,
+    "rev_bug": "9bce5b0",
+    "testcase": "Array.prototype.push(\"\");\ntry { constructor.freeze(Array.prototype)() } catch($){}\nnew RegExp().constructor.prototype.exec();\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1096,
+    "rev_bug": "ac3aa30",
+    "testcase": "\ntry { new (this.Array)() .constructor .prototype .push (this.decodeURI .$)  } catch($){}\ntry { this.Object .freeze (this.Array .prototype) .$ ()  } catch($){}\ntry { this.RegExp .prototype .exec ()  } catch($){}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1083,
+    "rev_bug": "e1c8a2e",
+    "testcase": "try { ; } catch (A) {}\ntry { new (this.String)().A.A.A (A)  } catch (A) {}\ntry { ; } catch (A) {}\ntry { new (this.RegExp)().A ()  } catch (A) {}\ntry { A.A.A ()  } catch (A) {}\ntry {  } catch (A) {}\ntry { ; } catch (A) {}\ntry { ; } catch (A) {}\ntry { ; } catch (A) {}\ntry { ; } catch (A) {}\ntry { new A.A ()  } catch (A) {}\ntry { new (this.Date)().setMinutes (this.RegExp.prototype)  } catch (A) {}\ntry { this.A (A)  } catch (A) {}\ntry { new A.A ()  } catch (A) {}\ntry { this.isNaN (this.RegExp.prototype.compile (this.RegExp.prototype))  } catch (A) {}\ntry { ; } catch (A) {}\ntry { A.A.A(A)  } catch (A) {}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1082,
+    "rev_bug": "e1c8a2e",
+    "testcase": "try { new (String)().A.A.A (A)  } catch (A) {}\ntry { new (this.RegExp)().A ()  } catch (A) {}\ntry { A.A.A ()  } catch (A) {}\ntry { ; } catch (A) {}\ntry { new A.A ()  } catch (A) {}\ntry { new (this.Date)().setMinutes (this.RegExp.prototype)  } catch (A) {}\ntry { ; } catch (A) {}\ntry { ; } catch (A) {}\ntry { new A.A (A)  } catch (A) {}\ntry { this.A (A)  } catch (A) {}\ntry { new A.A ()  } catch (A) {}\ntry { ; } catch (A) {}\ntry { ; } catch (A) {}\ntry { ; } catch (A) {}\ntry { ; } catch (A) {}\ntry { ; } catch (A) {}\ntry { ; } catch (A) {}\ntry { ; } catch (A) {}\ntry { ; } catch (A) {}\ntry { new A().A ()  } catch (A) {}\ntry { new A().A ()  } catch (A) {}\ntry { this.isNaN (this.RegExp.prototype.compile (this.RegExp.prototype))  } catch (A) {}\ntry { ; } catch (A) {}\ntry { A.A.A (A)  } catch (A) {}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1081,
+    "rev_bug": "e1c8a2e",
+    "testcase": "try { new RegExp().compile(A)  } catch (err) {}\ntry { A } catch (err) {}\ntry { new RegExp().constructor.prototype.toString()  } catch (A) {}\ntry { A } catch (err) {}\ntry { new RegExp(1, \"g\").exec(1)  } catch (A) {}\ntry { A } catch (err) {}\ntry { A } catch (A) {}\ntry { A } catch (A) {}\ntry { new (Boolean.constructor.prototype)  } catch (err) {}\ntry { Boolean  } catch (A) {}\ntry { A } catch(A) {}\ntry { new RegExp().compile(new (RegExp)())  } catch (A) {}\ntry { Math.max().constructor.seal(A) } catch (err) {}\ntry { Date.parse(RegExp.prototype.compile(RegExp.prototype)) } catch(A) {}\ntry { Boolean.A() } catch (err) {}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1080,
+    "rev_bug": "e1c8a2e",
+    "testcase": "((new RegExp(\"}\").constructor)(\"a\", \"g\").constructor)(undefined).constructor.prototype.toString();\nnew Date(\"2015-07-09T12:13:14.121+01:30\").toISOString();\nRegExp(new RegExp(\"a\", \"g\")).constructor(\"\").constructor.prototype.compile(RegExp.prototype);\nnew Date(\"2015-09-17\").getUTCFullYear();\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1079,
+    "rev_bug": "e1c8a2e",
+    "testcase": "try { Array.prototype.reverse().push(1)  } catch($){}\ntry { Object.freeze(Array.prototype)  } catch($){}\ntry { new RegExp().constructor.prototype.exec()  } catch($){}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1078,
+    "rev_bug": "e1c8a2e",
+    "testcase": "try { Array.prototype.splice(Function.prototype, 1, this)  } catch($){}\ntry { Object.freeze(Array.prototype)  } catch($){}\ntry { new String().split (new RegExp())  } catch($){}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1077,
+    "rev_bug": "e1c8a2e",
+    "testcase": "new Array(752692953).join(Date);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1076,
+    "rev_bug": "e1c8a2e",
+    "testcase": "try { Array.prototype.unshift(1)  } catch($){}\ntry { Object.freeze(this.Array.prototype)()  } catch($){}\ntry { new String(1).split(\"\")  } catch($){}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1075,
+    "rev_bug": "e1c8a2e",
+    "testcase": "try { new (RegExp)().$()  } catch($){}\ntry { RegExp.prototype.compile()  } catch($){}\ntry { new (this.$)(1, RegExp.prototype.compile(RegExp.prototype))  } catch($){}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1074,
+    "rev_bug": "e1c8a2e",
+    "testcase": "try { this.Date.prototype.$ (this.isNaN.length, this.String.fromCharCode.length)  } catch($){}\ntry { this.String.prototype.constructor.prototype.$(new (this.RegExp)())  } catch($){}\ntry { this.RegExp.prototype.constructor.prototype.compile ()  } catch($){}\ntry { this.isNaN (undefined)  } catch($){}\ntry { new (this.Date)(\"2015-09-17\").constructor.parse()  } catch($){}\ntry { this.isNaN(this.RegExp.prototype.compile(this.RegExp.prototype))  } catch($){}\ntry { new $.$ ()  } catch($){}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1073,
+    "rev_bug": "e1c8a2e",
+    "testcase": "try { String.prototype(new (RegExp)())  } catch($){}\ntry { RegExp.prototype.compile() } catch($){}\ntry { isNaN(RegExp.prototype.compile(RegExp.prototype)) } catch($){}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1072,
+    "rev_bug": "e1c8a2e",
+    "testcase": "try { new (this.$)(new (this.RegExp)().ignoreCase).$ ()  } catch($){}\ntry { new (this.String)() .constructor.prototype.match()  } catch($){}\ntry { this.RegExp().compile() } catch($){}\ntry { this.$(this.RegExp.prototype .compile (this.RegExp.prototype))  } catch($){}\n",
+    "bld_typ": "debug.linux"
+  },
+,
+  {
+    "issue": 1065,
+    "rev_bug": "7cf8b79",
+    "testcase": "new (new (new RegExp().constructor)().constructor)().constructor.prototype.toString()\nRegExp().constructor().constructor.prototype.compile(RegExp.prototype)\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1054,
+    "rev_bug": "210ba6d",
+    "testcase": "new String(Number.MAX_VALUE)\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 1031,
+    "rev_bug": "0c7d3fb",
+    "testcase": "new RegExp();\nnew (new Date())(RegExp.prototype.compile(RegExp.prototype));\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 787,
+    "rev_bug": "2c3c952",
+    "testcase": "Array.prototype.push(Math.sin);\nObject.freeze(Array.prototype);\nString.prototype.match(String.prototype);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 786,
+    "rev_bug": "2c3c952",
+    "testcase": "try { RegExp.prototype.toString() } catch (err) {  }\ntry { Date.prototype.toTimeString() } catch (err) {  }\ntry { Boolean.prototype.toString() } catch (err) {  }\ntry { String.prototype.match(isNaN) } catch (err) {  }\ntry { Math.round(Math.atan) } catch (err) {  }\ntry { Date.prototype.getUTCDay() } catch (err) {  }\ntry { toLocaleString() } catch (err) {  }\ntry { Array.prototype.join(String.prototype.split) } catch (err) {  }\ntry { Date.prototype.getSeconds() } catch (err) {  }\ntry { isNaN.apply(Date.prototype.toISOString, String.prototype.split) } catch (err) {  }\ntry { Math.cos(Object) } catch (err) {  }\ntry { Math.floor(Date.prototype.getUTCSeconds) } catch (err) {  }\ntry { isNaN.apply(assert, JSON.stringify) } catch (err) {  }\ntry { Number.prototype.toLocaleString() } catch (err) {  }\ntry { Date.prototype.getTimezoneOffset() } catch (err) {  }\ntry { Date.prototype.setMinutes(Object.getOwnPropertyDescriptor,  Object.getOwnPropertyNames) } catch (err) {  }\ntry { Math.log(String.prototype.search) } catch (err) {  }\ntry { ReferenceError(Object.defineProperty) } catch (err) {  }\ntry { Array.prototype.filter(Number.prototype.toLocaleString) } catch (err) {  }\ntry { Array.prototype.forEach(Date.prototype.getDay) } catch (err) {  }\ntry { Object.defineProperty(SyntaxError.prototype, Date.prototype.setUTCMinutes, Math.max) } catch (err) {  }\ntry { Date.prototype.setMilliseconds(String.prototype.localeCompare) } catch (err) {  }\ntry { Math.asin(Date.prototype.getDay) } catch (err) {  }\ntry { Array.prototype.some(Date.prototype.getDay) } catch (err) {  }\ntry { String.prototype.charCodeAt(toString) } catch (err) {  }\ntry { isPrototypeOf(Math.tan) } catch (err) {  }\ntry { Object.isFrozen(print) } catch (err) {  }\ntry { RegExp.prototype.compile(RegExp.prototype) } catch (err) {  }\n\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 785,
+    "rev_bug": "2c3c952",
+    "testcase": "try { RegExp.prototype.toString() } catch (err) {  }\ntry { isNaN.apply(unescape, JSON.stringify) } catch (err) {  }\ntry { Array.prototype.forEach(eval) } catch (err) {  }\ntry { RegExp.prototype.compile(RegExp.prototype) } catch (err) {  }\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 784,
+    "rev_bug": "2c3c952",
+    "testcase": "RegExp.prototype.toString();\nRegExp.prototype.compile(RegExp.prototype);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 783,
+    "rev_bug": "2c3c952",
+    "testcase": "RegExp.prototype.compile(RegExp.prototype);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 782,
+    "rev_bug": "2c3c952",
+    "testcase": "String.prototype.search(RegExp.prototype);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 781,
+    "rev_bug": "2c3c952",
+    "testcase": "try { Function(Array.isArray) } catch (err) { }\ntry { Function(TypeError.prototype) } catch (err) { }\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 693,
+    "rev_bug": "906558b",
+    "testcase": "var v_0 = 0;\nwhile (v_0 < v_1 || null, .573637)\n    v_0;\n\nwith(false)\n{\n    with (null) {}\n    0x9d894a;\n    switch(null)\n    {  \n        case 'GwEhGOCvgL' : \n        case 14219566547.27607 : \n        case 026500714644 : \n        case false : \n        case 00300726061 : \n        case 0Xf1d60CCbc : \n        case 077222 : \n        case true : \n        case 'OZZwmvW' : \n        default:\n    }\n}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 656,
+    "rev_bug": "98fc409",
+    "testcase": "switch(null)\n{\n    case \"foo\": \n        for(v_0 in v_1)\n}\ncase \"bar\":\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 655,
+    "rev_bug": "98fc409",
+    "testcase": "if (true) {}\n/a/;\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 654,
+    "rev_bug": "98fc409",
+    "testcase": "switch (true) {\n    case {\"foo\": \"bar\"}:\n        break;\n}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 653,
+    "rev_bug": "98fc409",
+    "testcase": "var a = \"foo\";\nswitch(a) {\n    case true ? \"foo\" : \"bar\":\n        print(\"OK\");\n        break;\n}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 652,
+    "rev_bug": "98fc409",
+    "testcase": "this / 10\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 642,
+    "rev_bug": "6697523",
+    "testcase": "Function.prototype.length = function() { };\nFunction.prototype.bind(0);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 641,
+    "rev_bug": "6697523",
+    "testcase": "Object.freeze(RegExp.prototype.compile)();\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 640,
+    "rev_bug": "6697523",
+    "testcase": "function f_0() {\n  var f_0 = 10;\n}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 639,
+    "rev_bug": "6697523",
+    "testcase": "Math.min(10); \nfunction f_0() {};\nfunction f_1() {\n  var f_1 = Date.prototype.getMilliseconds(Date.prototype.setUTCMonth);\n}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 614,
+    "rev_bug": "a26c454",
+    "testcase": "JSON.stringify & (Date = 1)\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 613,
+    "rev_bug": "a26c454",
+    "testcase": "a = \"\xe9\"\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 612,
+    "rev_bug": "a26c454",
+    "testcase": "RegExp.prototype.compile([]);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 590,
+    "rev_bug": "ab47365",
+    "testcase": "JSON.stringify([], [1, 1]);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 566,
+    "rev_bug": "4ee30cb",
+    "testcase": "({\"setTime\": Date.prototype.setTime}).setTime(-61);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 551,
+    "rev_bug": "58851bc",
+    "testcase": "JSON.stringify([], [ 'foo', 'foo' ]);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 548,
+    "rev_bug": "ff580ca",
+    "testcase": "var v_0 = [\n        0.1, 1.1, 2.1, 3.1, 4.1, 5.1, 6.1, 7.1, 8.1, 9.1, 10.1, 11.1, 12.1, 13.1, 14.1, 15.1,\n        16.1, 17.1, 18.1, 19.1, 20.1, 21.1, 22.1, 23.1, 24.1, 25.1, 26.1, 27.1, 28.1, 29.1, 30.1, 31.1,\n        32.1, 33.1, 34.1, 35.1, 36.1, 37.1, 38.1, 39.1, 40.1, 41.1, 42.1, 43.1, 44.1, 45.1, 46.1, 47.1,\n        48.1, 49.1, 50.1, 51.1, 52.1, 53.1, 54.1, 55.1, 56.1, 57.1, 58.1, 59.1, 60.1, 61.1, 62.1, 63.1,\n        64.1, 65.1, 66.1, 67.1, 68.1, 69.1, 70.1, 71.1, 72.1, 73.1, 74.1, 75.1, 76.1, 77.1, 78.1, 79.1,\n        80.1, 81.1, 82.1, 83.1, 84.1, 85.1, 86.1, 87.1, 88.1, 89.1, 90.1, 91.1, 92.1, 93.1, 94.1, 95.1,\n        96.1, 97.1, 98.1, 99.1, 100.1, 101.1, 102.1, 103.1, 104.1, 105.1, 106.1, 107.1, 108.1, 109.1, 110.1, 111.1,\n        112.1, 113.1, 114.1, 115.1, 116.1, 117.1, 118.1, 119.1, 120.1, 121.1, 122.1, 123.1, 124.1, 125.1, 126.1, 127.1,\n        128.1, 129.1, 130.1, 131.1, 132.1, 133.1, 134.1, 135.1, 136.1, 137.1, 138.1, 139.1, 140.1, 141.1, 142.1, 143.1,\n        144.1, 145.1, 146.1, 147.1, 148.1, 149.1, 150.1, 151.1, 152.1, 153.1, 154.1, 155.1, 156.1, 157.1, 158.1, 159.1,\n        160.1, 161.1, 162.1, 163.1, 164.1, 165.1, 166.1, 167.1, 168.1, 169.1, 170.1, 171.1, 172.1, 173.1, 174.1, 175.1,\n        176.1, 177.1, 178.1, 179.1, 180.1, 181.1, 182.1, 183.1, 184.1, 185.1, 186.1, 187.1, 188.1, 189.1, 190.1, 191.1,\n        192.1, 193.1, 194.1, 195.1, 196.1, 197.1, 198.1, 199.1, 200.1, 201.1, 202.1, 203.1, 204.1, 205.1, 206.1, 207.1,\n        208.1, 209.1, 210.1, 211.1, 212.1, 213.1, 214.1, 215.1, 216.1, 217.1, 218.1, 219.1, 220.1, 221.1, 222.1, 223.1,\n        224.1, 225.1, 226.1, 227.1, 228.1, 229.1, 230.1, 231.1, 232.1, 233.1, 234.1, 235.1, 236.1, 237.1, 238.1, 239.1,\n        240.1, 241.1, 242.1, 243.1, 244.1, 245.1, 246.1, 247.1, 248.1, 249.1, 250.1, 251.1, 252.1, 253.1, 254.1, 255.1,\n        256.1, 257.1, 258.1, 259.1, 260.1, 261.1, 262.1, 263.1, 264.1, 265.1, 266.1, 267.1, 268.1, 269.1, 270.1, 271.1,\n        272.1, 273.1, 274.1, 275.1, 276.1, 277.1, 278.1, 279.1, 280.1, 281.1, 282.1, 283.1, 284.1, 285.1, 286.1, 287.1,\n        288.1, 289.1, 290.1, 291.1, 292.1, 293.1, 294.1, 295.1, 296.1, 297.1, 298.1, 299.1, 300.1, 301.1, 302.1, 303.1,\n        304.1, 305.1, 306.1, 307.1, 308.1, 309.1, 310.1, 311.1, 312.1, 313.1, 314.1, 315.1, 316.1, 317.1, 318.1, 319.1,\n        320.1, 321.1, 322.1, 323.1, 324.1, 325.1, 326.1, 327.1, 328.1, 329.1, 330.1, 331.1, 332.1, 333.1, 334.1, 335.1,\n        336.1, 337.1, 338.1, 339.1, 340.1, 341.1, 342.1, 343.1, 344.1, 345.1, 346.1, 347.1, 348.1, 349.1, 350.1, 351.1,\n        352.1, 353.1, 354.1, 355.1, 356.1, 357.1, 358.1, 359.1, 360.1, 361.1, 362.1, 363.1, 364.1, 365.1, 366.1, 367.1,\n        368.1, 369.1, 370.1, 371.1, 372.1, 373.1, 374.1, 375.1, 376.1, 377.1, 378.1, 379.1, 380.1, 381.1, 382.1, 383.1,\n        384.1, 385.1, 386.1, 387.1, 388.1, 389.1, 390.1, 391.1, 392.1, 393.1, 394.1, 395.1, 396.1, 397.1, 398.1, 399.1,\n        400.1, 401.1, 402.1, 403.1, 404.1, 405.1, 406.1, 407.1, 408.1, 409.1, 410.1, 411.1, 412.1, 413.1, 414.1, 415.1,\n        416.1, 417.1, 418.1, 419.1, 420.1, 421.1, 422.1, 423.1, 424.1, 425.1, 426.1, 427.1, 428.1, 429.1, 430.1, 431.1,\n        432.1, 433.1, 434.1, 435.1, 436.1, 437.1, 438.1, 439.1, 440.1, 441.1, 442.1, 443.1, 444.1, 445.1, 446.1, 447.1,\n        448.1, 449.1, 450.1, 451.1, 452.1, 453.1, 454.1, 455.1, 456.1, 457.1, 458.1, 459.1, 460.1, 461.1, 462.1, 463.1,\n        464.1, 465.1, 466.1, 467.1, 468.1, 469.1, 470.1, 471.1, 472.1, 473.1, 474.1, 475.1, 476.1, 477.1, 478.1, 479.1,\n        480.1, 481.1, 482.1, 483.1, 484.1, 485.1, 486.1, 487.1, 488.1, 489.1, 490.1, 491.1, 492.1, 493.1, 494.1, 495.1,\n        496.1, 497.1, 498.1, 499.1, 500.1, 501.1, 502.1, 503.1, 504.1, 505.1, 506.1, 507.1, 508.1, 509.1, 510.1, 511.1\n    ];\n\n\nvar result = \"\";\nfor (var i in v_0) {\n    print(i);\n    result += v_0[i];\n}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 541,
+    "rev_bug": "5888401",
+    "testcase": "new RegExp(\"m\\\\u2820\");\nparseInt(\"145\");\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 526,
+    "rev_bug": "24c16da",
+    "testcase": "Number.prototype.toString = [];\nNumber.prototype.valueOf = {};\nJSON.stringify([], [ new Number(2.2) ]);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 511,
+    "rev_bug": "b5923cc",
+    "testcase": "Number.prototype.toString.bind('foo');\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 466,
+    "rev_bug": "021fc62",
+    "testcase": "\"use strict\";\n\nvar my_ var eval = eval;\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 465,
+    "rev_bug": "021fc62",
+    "testcase": "var v_0 = /[\\\\0]C/;\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 464,
+    "rev_bug": "021fc62",
+    "testcase": "'\\\\n'\n/./.exec(\"\U0004978d\");\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 463,
+    "rev_bug": "021fc62",
+    "testcase": "var v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9, v_10, v_11, v_12, v_13, v_14, v_15, v_16, v_17, v_18, v_19, v_20, v_21, v_22, v_23, v_24, v_25, v26, v_27, v_28, v_29;\n\nfunction f_0() { JSON.stringify(this); }\nfunction f_1() {}\nfunction f_2() {}\nfunction f_3() {}\nfunction f_4() {}\nfunction f_5() {}\nfunction f_6() {}\nfunction f_7() {}\nf_0();\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 453,
+    "rev_bug": "63083b3",
+    "testcase": "try {\n    var v_0 = [\n        ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,     \n        ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,     \n        ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,     \n        ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,     \n        ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,     \n        ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,     ];\n    }\ncatch(e) {}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 447,
+    "rev_bug": "7c16228",
+    "testcase": "for (v_0 in v_1) {};\nf_0(v_2.v_3 === 5);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 446,
+    "rev_bug": "7c16228",
+    "testcase": "var v_0 - [];\nv_0 instanceof assert;\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 445,
+    "rev_bug": "7c16228",
+    "testcase": "var v_0 = Number\nvar v_1 = new v_0(\"1e73\")\nv_1.toString(35);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 429,
+    "rev_bug": "6038173",
+    "testcase": "var v_0 = [\n    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,\n    16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,\n    32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47,\n    48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63,\n    64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79,\n    80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95,\n    96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111,\n    112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127,\n    128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143,\n    144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159,\n    160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175,\n    176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191,\n    192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207,\n    208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223,\n    224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239,\n    240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255\n];\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 428,
+    "rev_bug": "6038173",
+    "testcase": "parseInt('');\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 426,
+    "rev_bug": "6038173",
+    "testcase": "String.prototype.trim.call('\\\\uf389');\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 420,
+    "rev_bug": "b414329",
+    "testcase": "new Date(2013, -1);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 414,
+    "rev_bug": "abc2b55",
+    "testcase": "Math.max(Number.POSITIVE_INFINITY, 234);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 413,
+    "rev_bug": "abc2b55",
+    "testcase": "Date.prototype.setUTCMinutes();\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 411,
+    "rev_bug": "abc2b55",
+    "testcase": "var a = [\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\"];\nprint(JSON.stringify(a));\n// a.length: 39\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 410,
+    "rev_bug": "abc2b55",
+    "testcase": "Date(Number.POSITIVE_INFINITY).toString();\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 406,
+    "rev_bug": "abc2b55",
+    "testcase": "JSON.stringify('\\\\u2028')\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 381,
+    "rev_bug": "13cf314",
+    "testcase": "function f_0(){\n    'use strict';\n    var v_0 = {\n        p_0: function(a_0, a_1) {}\n    };\n    f_1(function(a_2) {});\n}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 380,
+    "rev_bug": "13cf314",
+    "testcase": "var v_0 = [];\nvar v_1 = [['\\\\u200E', '\\\\u0601', '\\\\u0602', '\\\\u0603', '\\\\u06DD', '\\\\u070F'],[0x1107, 0x1175, 0x11B0]];\nv_0[v_1];\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 379,
+    "rev_bug": "13cf314",
+    "testcase": "JSON.stringify([[0xeff1],[0xD6C3]]);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 378,
+    "rev_bug": "13cf314",
+    "testcase": "JSON.stringify(\"\");\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 359,
+    "rev_bug": "9b24d8f",
+    "testcase": "function f_0(a_0) {\n    \"use strict\";\n    Object.freeze({a: \"foo\"});\n}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 358,
+    "rev_bug": "9b24d8f",
+    "testcase": "label_0: \n    if (false)\n        do  {\n            continue label_0;\n        } while (false);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 348,
+    "rev_bug": "146ac15",
+    "testcase": "new Date(20000000, 0, 1);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 341,
+    "rev_bug": "146ac15",
+    "testcase": "\ufffd\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 340,
+    "rev_bug": "146ac15",
+    "testcase": "'\\\\0'+'456';\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 339,
+    "rev_bug": "146ac15",
+    "testcase": "y = 4e;\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 317,
+    "rev_bug": "4e5e7bb",
+    "testcase": "RegExp(Date.prototype,35826);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 316,
+    "rev_bug": "4e5e7bb",
+    "testcase": "v_1 = RegExp.prototype.test;\nv_1(ReferenceError);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 314,
+    "rev_bug": "4e5e7bb",
+    "testcase": "Math.round(RegExp.prototype);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 312,
+    "rev_bug": "4e5e7bb",
+    "testcase": "RegExp.prototype.exec(10);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 295,
+    "rev_bug": "017aa6b",
+    "testcase": "function f_0() {\n    try {\n      Function(\"for(w in\\\\\\\\\");\n    } catch (e) {}\n}\n\nf_0();\nf_0();\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 286,
+    "rev_bug": "505bead",
+    "testcase": "switch(foo){ \n    default:\n        while(false)\n            foo() {\n                case a : {}\n            }\n}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 285,
+    "rev_bug": "505bead",
+    "testcase": "NaN == RegExp;\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 284,
+    "rev_bug": "ec02ace",
+    "testcase": "v_0 = {a: Math, /[]/ };\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 282,
+    "rev_bug": "ec02ace",
+    "testcase": "switch(foo){} {}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 281,
+    "rev_bug": "ec02ace",
+    "testcase": "while(false) foo\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 280,
+    "rev_bug": "ec02ace",
+    "testcase": "v_0 = {0: delete 3. instanceof foo() ^ {} }\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 279,
+    "rev_bug": "2aa0485",
+    "testcase": "parseInt(RegExp(\"\\\\u2029\"));\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 278,
+    "rev_bug": "2aa0485",
+    "testcase": "eval(String());\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 276,
+    "rev_bug": "2aa0485",
+    "testcase": "/* 256 \"a\" in the array */\n\ntry {\n  [\"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\", \"a\"];\n} catch(e) { }\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 274,
+    "rev_bug": "2aa0485",
+    "testcase": "'\ufffd'\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 267,
+    "rev_bug": "06dffde",
+    "testcase": "try {\n    RegExp(\"\\\\u2029\");\n} catch(err) {}\n\ntry {\n    URIError(isNaN(__proto__));\n} catch(err) {}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 266,
+    "rev_bug": "06dffde",
+    "testcase": "try {\n    String(\"test\");\n    isNaN(__proto__);\n} catch(err) {}\n\ntry {\n    SyntaxError(RegExp(\"[/]\"));\n} catch(err) {}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 265,
+    "rev_bug": "06dffde",
+    "testcase": "parseInt(NaN,RegExp(\"54\"));\n\ntry {\n    parseInt(ArrayBuffer());\n} catch(err) {}\n\ntry {\n    isNaN(__proto__);\n} catch(err) {}\n\nRangeError(parseInt(Infinity,readbuffer()));\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 264,
+    "rev_bug": "06dffde",
+    "testcase": "try {\n    Boolean(decodeURI(decodeURIComponent(Number())));\n } catch(err) {}\n try {\n    ReferenceError(isNaN(__proto__));\n } catch(err) {}\n try {\n    isNaN(__proto__);\n } catch(err) {}\n try {\n    load();\n } catch(err) {}\n try {\n    RegExp(\"\\\\n\");\n } catch(err) {}\n try {\n    Set();\n } catch(err) {}\n try {\n    ReferenceError(performance.__proto__.isPrototypeOf(arguments.map(os)));\n } catch(err) {}\n try {\n    Float64Array(performance,WeakSet(),Infinity.valueOf());\n } catch(err) {}\n try {\n    arguments.push(Int8Array(Boolean(isFinite(quit())),ArrayBuffer(os.system()),Array(read())));\n } catch(err) {}\n try {\n    Boolean(encodeURI(DataView(ArrayBuffer(os),parseFloat(Set()),URIError(Object(Int8Array(Function(parseInt(write(),RangeError(__proto__.valueOf()))),Int16Array(Map(),__proto__.valueOf(),readbuffer()),Math))))));\n } catch(err) {}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 263,
+    "rev_bug": "06dffde",
+    "testcase": "try {\n    Boolean(decodeURI(decodeURIComponent(Number())));\n} catch(err) {}\n try {\n    ReferenceError(isNaN(__proto__));\n } catch(err) {}\n try {\n    isNaN(__proto__);\n } catch(err) {}\n try {\n    load();\n } catch(err) {}\n try {\n    RegExp(\"\\\\n\");\n } catch(err) {}\n try {} catch(err) {}\n try {\n    ReferenceError(performance.__proto__.isPrototypeOf(arguments.map(os)));\n } catch(err) {}\n try {\n    Float64Array(performance,WeakSet(),Infinity.valueOf());\n } catch(err) {}\n try {\n    arguments.push(Int8Array(Boolean(isFinite(quit())),ArrayBuffer(os.system()),Array(read())));\n } catch(err) {}\n try {\n    Boolean(encodeURI(DataView(ArrayBuffer(os),parseFloat(Set()),URIError(Object(Int8Array(Function(parseInt(write(),RangeError(__proto__.valueOf()))),Int16Array(Map(),__proto__.valueOf(),readbuffer()),Math))))));\n } catch(err) {}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 262,
+    "rev_bug": "06dffde",
+    "testcase": "RegExp(\"\");\neval(encodeURI(isNaN(__proto__)));\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 261,
+    "rev_bug": "06dffde",
+    "testcase": "SyntaxError(RegExp());\nisFinite(foo);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 260,
+    "rev_bug": "06dffde",
+    "testcase": "isNaN(__proto__);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 257,
+    "rev_bug": "06dffde",
+    "testcase": "new RegExp(\"]\");\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 256,
+    "rev_bug": "06dffde",
+    "testcase": "new RegExp(\"[K-V]{45,13}\");\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 255,
+    "rev_bug": "06dffde",
+    "testcase": "v_0 = /(?!(?!l{666,}))/;\nv_0.exec(\"llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll\");\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 245,
+    "rev_bug": "e027b4d",
+    "testcase": "v_0 = /N(?![^6](?:.)|(?!C[^k-o]*|p){0,}|H)|\\\\\\\\xDF\\\\\\\\db{0,}|i\\\\\\\\0?)/;\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 228,
+    "rev_bug": "216dc25",
+    "testcase": "Object.unobserve(undefined,print());\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 212,
+    "rev_bug": "6027906",
+    "testcase": "with(0xB276)\n  eval(\"foo = true;\");\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 195,
+    "rev_bug": "8a9633d",
+    "testcase": "function Error() {}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 186,
+    "rev_bug": "5d5e75f",
+    "testcase": "write.call(eval.constructor(encodeURIComponent.__proto__.__proto__.isPrototypeOf(operation.__proto__.__defineGetter__.call.__proto__.constructor.getOwnPropertyDescriptor.__proto__.bind.__proto__.__defineSetter__(performance.__proto__.toLocaleString.__proto__.bind(Date(Infinity,ReferenceError.__proto__.prototype.toString(),NaN,eval(Function(isNaN.__proto__.call.bind.__proto__.toString.call.constructor.__proto__.toString.__proto__.call(eval.toString.toLocaleString.apply(Boolean.prototype.constructor(ReferenceError.__proto__.prototype),readbuffer.constructor(parseFloat(SyntaxError.__proto__.__proto__())))))),quit.apply.constructor.__proto__(),escape.__proto__.__lookupSetter__.__proto__.__proto__.toString(),SyntaxError.__proto__.apply(parseFloat.constructor(),Math.imul())))))));\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 185,
+    "rev_bug": "5d5e75f",
+    "testcase": "RegExp.prototype.__lookupGetter__.__proto__.__proto__.__defineGetter__(Error.toString.__proto__.constructor(JSON.parse.__proto__.__proto__.__defineGetter__.bind.__proto__.toLocaleString.__proto__.__proto__),String.fromCharCode(print.bind(operation.toFixed.__proto__.call(JSON.stringify(RangeError.stackTraceLimit,read.apply.__proto__.constructor.__lookupGetter__.__proto__.propertyIsEnumerable.__proto__.constructor.toString.toLocaleString.constructor(TypeError.__proto__(Map.prototype.entries())),parseInt(undefined,String.__lookupSetter__.apply.__defineSetter__(unescape(NaN.__proto__.constructor.__proto__.call(__proto__.__proto__)),performance.__proto__.__lookupSetter__.constructor.__proto__.constructor.keys.__proto__.call(Number.MIN_VALUE))))))));\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 164,
+    "rev_bug": "d988da8",
+    "testcase": "for ( ; ; ) {\n  with ( v_1 ) {\n    with ( v_1 ) { }\n  }\n}\n",
+    "bld_typ": "debug.linux"
+  },
+,
+  {
+    "issue": 132,
+    "rev_bug": "77df022",
+    "testcase": "v_0 = [,];\nv_1 = [,];\nv_2 = Object.defineProperties([,], { '0': {  get: function() { } } });\nfunction f_0() {}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 131,
+    "rev_bug": "77df022",
+    "testcase": "Object.defineProperties([], undefined);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 130,
+    "rev_bug": "77df022",
+    "testcase": "v_1 = Math.floor('\\\\u3d52');\nv_1 = Math.floor([]);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 129,
+    "rev_bug": "77df022",
+    "testcase": "do {\n    return null;\n} while (false);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 128,
+    "rev_bug": "77df022",
+    "testcase": "do {\n    try {\n    } finally {\n        break;\n    }\n} while (false);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 123,
+    "rev_bug": "aaeec7f",
+    "testcase": "var v_1 = (1 + (1 + (1 +\n    (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 +\n    (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 +\n    (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 + (1 +\n    1\n    )) )) )) )) )) )) )) )) )) ))\n    )) )) )) )) )) )) )) )) )) ))\n    )) )) )) )) )) )) )) )) )) ))\n    )) );\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 122,
+    "rev_bug": "aaeec7f",
+    "testcase": "print(this, []);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 121,
+    "rev_bug": "aaeec7f",
+    "testcase": "function f_1() { \n    v_1 + v_1;\n}\nf_1(new f_1);\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 120,
+    "rev_bug": "aaeec7f",
+    "testcase": "for(;;) {}\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 118,
+    "rev_bug": "aaeec7f",
+    "testcase": "function f_1() {\n    f_1();\n}\nf_1();\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 117,
+    "rev_bug": "aaeec7f",
+    "testcase": "[print(typeof v_1)];\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 116,
+    "rev_bug": "aaeec7f",
+    "testcase": "Symbol.for.length.toString.length.toExponential.length.valueOf.length.toExponential.length.valueOf.length.toFixed.name.anchor.name.bold.length.toExponential.caller;\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 115,
+    "rev_bug": "aaeec7f",
+    "testcase": "var v_1 = [,];\nObject.defineProperty(v_1, \"0\", {\n    set: function() {},\n});\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 114,
+    "rev_bug": "aaeec7f",
+    "testcase": "v_1 = 1;\nv_1[1] = 1;\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 113,
+    "rev_bug": "aaeec7f",
+    "testcase": "v_1 = [];\nv_1 * v_1[v_1 % v_1];\n",
+    "bld_typ": "debug.linux"
+  },
+  {
+    "issue": 112,
+    "rev_bug": "aaeec7f",
+    "testcase": "Math.cos + 1;\n",
+    "bld_typ": "debug.linux"
   }
 ]

@@ -39,3 +39,8 @@ docs/doxygen
 # Tests
 tests/test262/
 .vs
+
+# Generated files for coverage
+*.gz
+*.map
+tracer*.o
