@@ -2,7 +2,7 @@
   {
     "issue": 2719,
     "rev_bug": "c23cf417",
-    "testcase": "JSON.stringify(URIError, valueOf, new String('abc\\\\u2040\\\\u2030cba'));\r\n",
+    "testcase": "JSON.stringify(URIError, valueOf, new String('abc\\u2040\\u2030cba'));\r\n",
     "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-m32 --profile=es2015-subset --system-allocator=on --error-messages=on --logging=on"
   },
   {
@@ -38,7 +38,7 @@
   {
     "issue": 2660,
     "rev_bug": "ec142f5f",
-    "testcase": "new RegExp(\"\\\\{{91[06,456}\");\r\n",
+    "testcase": "new RegExp(\"\\{{91[06,456}\");\r\n",
     "bld_cmd": "./tools/build.py --clean --debug --profile=es2015-subset --logging=on"
   },
   {
@@ -170,19 +170,19 @@
   {
     "issue": 2453,
     "rev_bug": "1ac2903d",
-    "testcase": "var src = \"\";\r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += 4 + i + \": a += a += a; break; \" ; \r\n    src += \"\\\\\U0001d53a\\\\\r\n\\\\\u2029\" ; \r\nprint ( src ) ;\r\n \r\n",
+    "testcase": "var src = \"\";\r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += 4 + i + \": a += a += a; break; \" ; \r\n    src += \"\\\ud835\udd3a\\\r\n\\\u2029\" ; \r\nprint ( src ) ;\r\n \r\n",
     "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --logging=on --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset"
   },
   {
     "issue": 2452,
     "rev_bug": "1ac2903d",
-    "testcase": "var src = \"\";\r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += \"\\\\udc00%f0%90%80%80\\\\udc00\";\r\nsrc += \"} }\" ; \r\nprint ( src ) ;\r\n \r\n",
+    "testcase": "var src = \"\";\r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += \"\\udc00%f0%90%80%80\\udc00\";\r\nsrc += \"} }\" ; \r\nprint ( src ) ;\r\n \r\n",
     "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --logging=on --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset"
   },
   {
     "issue": 2451,
     "rev_bug": "1ac2903d",
-    "testcase": "var src = \"var a = 0; while(a) { switch(a) {\" ; \r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += \"-Infinity\" + i + \"\\\\u00a0\\\\u00a01.2e3\" ; \r\nsrc += \"\\\\udc00%f0%90%80%80\\\\udc00\" ; \r\nprint ( src ) ; \r\n",
+    "testcase": "var src = \"var a = 0; while(a) { switch(a) {\" ; \r\nfor ( var i = 0 ; i < 4000 ; i ++ ) \r\n    src += \"-Infinity\" + i + \"\\u00a0\\u00a01.2e3\" ; \r\nsrc += \"\\udc00%f0%90%80%80\\udc00\" ; \r\nprint ( src ) ; \r\n",
     "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset --logging=on"
   },
   {
@@ -200,13 +200,13 @@
   {
     "issue": 2383,
     "rev_bug": "8b8bced6",
-    "testcase": "print(JSON.stringify([\r\n\t{\"dddddd\":\"ccccccccccccc\",\"bbbbb\":225,\"vvvvv\":{\"aaaaaaa\":\"call\",\"ffffffff\":[\"w2\\\\u1D306A\"],\"fz_return\":0}},\r\n\t{\"dddddd\":\"ccccccccccccc\",\"bbbbb\":225,\"vvvvv\":{\"aaaaaaa\":\"call\",\"ffffffff\":[\"\\\\uD834\\\\uDF06\"],\"fz_return\":0}},\r\n\t{\"vvvvv\":{\"aaaaaaa\":\"call\",\"fffffffff\":[\"D\"],\"fz_return\":0}}]))\r\n",
+    "testcase": "print(JSON.stringify([\r\n\t{\"dddddd\":\"ccccccccccccc\",\"bbbbb\":225,\"vvvvv\":{\"aaaaaaa\":\"call\",\"ffffffff\":[\"w2\\u1D306A\"],\"fz_return\":0}},\r\n\t{\"dddddd\":\"ccccccccccccc\",\"bbbbb\":225,\"vvvvv\":{\"aaaaaaa\":\"call\",\"ffffffff\":[\"\\uD834\\uDF06\"],\"fz_return\":0}},\r\n\t{\"vvvvv\":{\"aaaaaaa\":\"call\",\"fffffffff\":[\"D\"],\"fz_return\":0}}]))\r\n",
     "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
     "issue": 2344,
     "rev_bug": "872825fb",
-    "testcase": "new RegExp().compile(\"\\\\\\\\1\\\\\\\\\");\r\n",
+    "testcase": "new RegExp().compile(\"\\\\1\\\\\");\r\n",
     "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address         --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer         --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off         --static-link=off --strip=off --system-allocator=on         --linker-flag=-fuse-ld=gold --error-messages=on"
   },
   {
@@ -218,7 +218,7 @@
   {
     "issue": 2204,
     "rev_bug": "d7991ae5",
-    "testcase": "new RegExp(\"\\\\{{91406,456}\");\r\n",
+    "testcase": "new RegExp(\"\\{{91406,456}\");\r\n",
     "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
@@ -230,7 +230,7 @@
   {
     "issue": 2192,
     "rev_bug": "918eb22a",
-    "testcase": "JSON.parse('\"' + '\\\\\\\\u');\r\n",
+    "testcase": "JSON.parse('\"' + '\\\\u');\r\n",
     "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset"
   },
   {
@@ -254,7 +254,7 @@
   {
     "issue": 2180,
     "rev_bug": "918eb22a",
-    "testcase": "JSON.parse('\"' + '\\\\\\\\');\r\n",
+    "testcase": "JSON.parse('\"' + '\\\\');\r\n",
     "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on --profile=es2015-subset"
   },
   {
@@ -335,7 +335,6 @@
     "testcase": "/?:/\r\n",
     "bld_cmd": "./tools/build.py --clean --debug"
   },
-,
   {
     "issue": 1997,
     "rev_bug": "7905422",
@@ -399,25 +398,25 @@
   {
     "issue": 1871,
     "rev_bug": "a9e7dd7",
-    "testcase": "// in hex:\r\n\\\\xf0\\\\x90\\\\xae\\\\xa9\\\\xe0\\\\xad\\\\x9f\r\n",
+    "testcase": "// in hex:\r\n\\xf0\\x90\\xae\\xa9\\xe0\\xad\\x9f\r\n",
     "bld_cmd": "./tools/build.py --clean --debug"
   },
   {
     "issue": 1861,
     "rev_bug": "b51b682",
-    "testcase": "{  ( $\n&& $ != $ instanceof [ $ , /[\\\\\uffd0]\\\\\U0001f02c/ ]\n? $ : $\n",
+    "testcase": "{  ( $\n&& $ != $ instanceof [ $ , /[\\\uffd0]\\\ud83c\udc2c/ ]\n? $ : $\n",
     "bld_cmd": "./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --compile-flag=-g --jerry-libc=off --static-link=off --strip=off --system-allocator=on --linker-flag=-fuse-ld=gold --error-messages=on"
   },
   {
     "issue": 1831,
     "rev_bug": "31cd3b8",
-    "testcase": "/\u12b1\U0001eef2/\u200c\u0b83\ufe20\ufe4d\r\n",
+    "testcase": "/\u12b1\ud83b\udef2/\u200c\u0b83\ufe20\ufe4d\r\n",
     "bld_cmd": "./tools/build.py --clean --debug --error-messages=on"
   },
   {
     "issue": 1830,
     "rev_bug": "31cd3b8",
-    "testcase": "/[\\\\\ua9ff]\u0c58/\r\n",
+    "testcase": "/[\\\ua9ff]\u0c58/\r\n",
     "bld_cmd": "./tools/build.py --clean --debug --error-messages=on"
   },
   {
@@ -555,7 +554,7 @@
   {
     "issue": 1551,
     "rev_bug": "7b59c80",
-    "testcase": "with open('test.js', 'wb') as f:\r\n    f.write(b\"\\\\xef\\\\xbb\\\\xbf\")\ufeff\r\n",
+    "testcase": "with open('test.js', 'wb') as f:\r\n    f.write(b\"\\xef\\xbb\\xbf\")\ufeff\r\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -567,7 +566,7 @@
   {
     "issue": 1549,
     "rev_bug": "7b59c80",
-    "testcase": "with open('test.js', 'wb') as f:\r\n    f.write(b\"function $() {\\\\\r\n$ = { \\\\\r\n$:$, $: ($ ($, ($ * ($[(($ + '(Cq\\\\xd4c=V\\\\xcc'.$ ())) & $] + $))))\\\\\r\n}\\\\\r\n}\")\r\n",
+    "testcase": "with open('test.js', 'wb') as f:\r\n    f.write(b\"function $() {\\\r\n$ = { \\\r\n$:$, $: ($ ($, ($ * ($[(($ + '(Cq\\xd4c=V\\xcc'.$ ())) & $] + $))))\\\r\n}\\\r\n}\")\r\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -684,7 +683,6 @@
     "testcase": "try { new (this.$)(new (this.RegExp)().ignoreCase).$ ()  } catch($){}\ntry { new (this.String)() .constructor.prototype.match()  } catch($){}\ntry { this.RegExp().compile() } catch($){}\ntry { this.$(this.RegExp.prototype .compile (this.RegExp.prototype))  } catch($){}\n",
     "bld_typ": "debug.linux"
   },
-,
   {
     "issue": 1065,
     "rev_bug": "7cf8b79",
@@ -814,7 +812,7 @@
   {
     "issue": 613,
     "rev_bug": "a26c454",
-    "testcase": "a = \"\xe9\"\n",
+    "testcase": "a = \"\u00e9\"\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -850,7 +848,7 @@
   {
     "issue": 541,
     "rev_bug": "5888401",
-    "testcase": "new RegExp(\"m\\\\u2820\");\nparseInt(\"145\");\n",
+    "testcase": "new RegExp(\"m\\u2820\");\nparseInt(\"145\");\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -874,13 +872,13 @@
   {
     "issue": 465,
     "rev_bug": "021fc62",
-    "testcase": "var v_0 = /[\\\\0]C/;\n",
+    "testcase": "var v_0 = /[\\0]C/;\n",
     "bld_typ": "debug.linux"
   },
   {
     "issue": 464,
     "rev_bug": "021fc62",
-    "testcase": "'\\\\n'\n/./.exec(\"\U0004978d\");\n",
+    "testcase": "'\\n'\n/./.exec(\"\ud8e5\udf8d\");\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -928,7 +926,7 @@
   {
     "issue": 426,
     "rev_bug": "6038173",
-    "testcase": "String.prototype.trim.call('\\\\uf389');\n",
+    "testcase": "String.prototype.trim.call('\\uf389');\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -964,7 +962,7 @@
   {
     "issue": 406,
     "rev_bug": "abc2b55",
-    "testcase": "JSON.stringify('\\\\u2028')\n",
+    "testcase": "JSON.stringify('\\u2028')\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -976,7 +974,7 @@
   {
     "issue": 380,
     "rev_bug": "13cf314",
-    "testcase": "var v_0 = [];\nvar v_1 = [['\\\\u200E', '\\\\u0601', '\\\\u0602', '\\\\u0603', '\\\\u06DD', '\\\\u070F'],[0x1107, 0x1175, 0x11B0]];\nv_0[v_1];\n",
+    "testcase": "var v_0 = [];\nvar v_1 = [['\\u200E', '\\u0601', '\\u0602', '\\u0603', '\\u06DD', '\\u070F'],[0x1107, 0x1175, 0x11B0]];\nv_0[v_1];\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -1018,7 +1016,7 @@
   {
     "issue": 340,
     "rev_bug": "146ac15",
-    "testcase": "'\\\\0'+'456';\n",
+    "testcase": "'\\0'+'456';\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -1054,7 +1052,7 @@
   {
     "issue": 295,
     "rev_bug": "017aa6b",
-    "testcase": "function f_0() {\n    try {\n      Function(\"for(w in\\\\\\\\\");\n    } catch (e) {}\n}\n\nf_0();\nf_0();\n",
+    "testcase": "function f_0() {\n    try {\n      Function(\"for(w in\\\\\");\n    } catch (e) {}\n}\n\nf_0();\nf_0();\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -1096,7 +1094,7 @@
   {
     "issue": 279,
     "rev_bug": "2aa0485",
-    "testcase": "parseInt(RegExp(\"\\\\u2029\"));\n",
+    "testcase": "parseInt(RegExp(\"\\u2029\"));\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -1120,7 +1118,7 @@
   {
     "issue": 267,
     "rev_bug": "06dffde",
-    "testcase": "try {\n    RegExp(\"\\\\u2029\");\n} catch(err) {}\n\ntry {\n    URIError(isNaN(__proto__));\n} catch(err) {}\n",
+    "testcase": "try {\n    RegExp(\"\\u2029\");\n} catch(err) {}\n\ntry {\n    URIError(isNaN(__proto__));\n} catch(err) {}\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -1138,13 +1136,13 @@
   {
     "issue": 264,
     "rev_bug": "06dffde",
-    "testcase": "try {\n    Boolean(decodeURI(decodeURIComponent(Number())));\n } catch(err) {}\n try {\n    ReferenceError(isNaN(__proto__));\n } catch(err) {}\n try {\n    isNaN(__proto__);\n } catch(err) {}\n try {\n    load();\n } catch(err) {}\n try {\n    RegExp(\"\\\\n\");\n } catch(err) {}\n try {\n    Set();\n } catch(err) {}\n try {\n    ReferenceError(performance.__proto__.isPrototypeOf(arguments.map(os)));\n } catch(err) {}\n try {\n    Float64Array(performance,WeakSet(),Infinity.valueOf());\n } catch(err) {}\n try {\n    arguments.push(Int8Array(Boolean(isFinite(quit())),ArrayBuffer(os.system()),Array(read())));\n } catch(err) {}\n try {\n    Boolean(encodeURI(DataView(ArrayBuffer(os),parseFloat(Set()),URIError(Object(Int8Array(Function(parseInt(write(),RangeError(__proto__.valueOf()))),Int16Array(Map(),__proto__.valueOf(),readbuffer()),Math))))));\n } catch(err) {}\n",
+    "testcase": "try {\n    Boolean(decodeURI(decodeURIComponent(Number())));\n } catch(err) {}\n try {\n    ReferenceError(isNaN(__proto__));\n } catch(err) {}\n try {\n    isNaN(__proto__);\n } catch(err) {}\n try {\n    load();\n } catch(err) {}\n try {\n    RegExp(\"\\n\");\n } catch(err) {}\n try {\n    Set();\n } catch(err) {}\n try {\n    ReferenceError(performance.__proto__.isPrototypeOf(arguments.map(os)));\n } catch(err) {}\n try {\n    Float64Array(performance,WeakSet(),Infinity.valueOf());\n } catch(err) {}\n try {\n    arguments.push(Int8Array(Boolean(isFinite(quit())),ArrayBuffer(os.system()),Array(read())));\n } catch(err) {}\n try {\n    Boolean(encodeURI(DataView(ArrayBuffer(os),parseFloat(Set()),URIError(Object(Int8Array(Function(parseInt(write(),RangeError(__proto__.valueOf()))),Int16Array(Map(),__proto__.valueOf(),readbuffer()),Math))))));\n } catch(err) {}\n",
     "bld_typ": "debug.linux"
   },
   {
     "issue": 263,
     "rev_bug": "06dffde",
-    "testcase": "try {\n    Boolean(decodeURI(decodeURIComponent(Number())));\n} catch(err) {}\n try {\n    ReferenceError(isNaN(__proto__));\n } catch(err) {}\n try {\n    isNaN(__proto__);\n } catch(err) {}\n try {\n    load();\n } catch(err) {}\n try {\n    RegExp(\"\\\\n\");\n } catch(err) {}\n try {} catch(err) {}\n try {\n    ReferenceError(performance.__proto__.isPrototypeOf(arguments.map(os)));\n } catch(err) {}\n try {\n    Float64Array(performance,WeakSet(),Infinity.valueOf());\n } catch(err) {}\n try {\n    arguments.push(Int8Array(Boolean(isFinite(quit())),ArrayBuffer(os.system()),Array(read())));\n } catch(err) {}\n try {\n    Boolean(encodeURI(DataView(ArrayBuffer(os),parseFloat(Set()),URIError(Object(Int8Array(Function(parseInt(write(),RangeError(__proto__.valueOf()))),Int16Array(Map(),__proto__.valueOf(),readbuffer()),Math))))));\n } catch(err) {}\n",
+    "testcase": "try {\n    Boolean(decodeURI(decodeURIComponent(Number())));\n} catch(err) {}\n try {\n    ReferenceError(isNaN(__proto__));\n } catch(err) {}\n try {\n    isNaN(__proto__);\n } catch(err) {}\n try {\n    load();\n } catch(err) {}\n try {\n    RegExp(\"\\n\");\n } catch(err) {}\n try {} catch(err) {}\n try {\n    ReferenceError(performance.__proto__.isPrototypeOf(arguments.map(os)));\n } catch(err) {}\n try {\n    Float64Array(performance,WeakSet(),Infinity.valueOf());\n } catch(err) {}\n try {\n    arguments.push(Int8Array(Boolean(isFinite(quit())),ArrayBuffer(os.system()),Array(read())));\n } catch(err) {}\n try {\n    Boolean(encodeURI(DataView(ArrayBuffer(os),parseFloat(Set()),URIError(Object(Int8Array(Function(parseInt(write(),RangeError(__proto__.valueOf()))),Int16Array(Map(),__proto__.valueOf(),readbuffer()),Math))))));\n } catch(err) {}\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -1186,7 +1184,7 @@
   {
     "issue": 245,
     "rev_bug": "e027b4d",
-    "testcase": "v_0 = /N(?![^6](?:.)|(?!C[^k-o]*|p){0,}|H)|\\\\\\\\xDF\\\\\\\\db{0,}|i\\\\\\\\0?)/;\n",
+    "testcase": "v_0 = /N(?![^6](?:.)|(?!C[^k-o]*|p){0,}|H)|\\\\xDF\\\\db{0,}|i\\\\0?)/;\n",
     "bld_typ": "debug.linux"
   },
   {
@@ -1225,7 +1223,6 @@
     "testcase": "for ( ; ; ) {\n  with ( v_1 ) {\n    with ( v_1 ) { }\n  }\n}\n",
     "bld_typ": "debug.linux"
   },
-,
   {
     "issue": 132,
     "rev_bug": "77df022",
@@ -1241,7 +1238,7 @@
   {
     "issue": 130,
     "rev_bug": "77df022",
-    "testcase": "v_1 = Math.floor('\\\\u3d52');\nv_1 = Math.floor([]);\n",
+    "testcase": "v_1 = Math.floor('\\u3d52');\nv_1 = Math.floor([]);\n",
     "bld_typ": "debug.linux"
   },
   {

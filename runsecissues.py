@@ -25,7 +25,7 @@ def title(str):
     print('\033]0;' + str, end='\007\n')
 
 def make(dirname, version, target, build_command):
-    global baserepo, CRLF;
+    global baserepo;
     if os.path.exists(target):
         print('Target ' + target + ' exists, skipping rebuild.')
         return
@@ -48,7 +48,7 @@ def make(dirname, version, target, build_command):
         else:
             tracerobject = TRACEROBJBASE + '.o'
         command = ['/usr/bin/python3'] \
-                + CRLF.sub(' ', build_command).split(' ') \
+                + build_command.split(' ') \
                 + ['--builddir=' + blddir,
                     '--compile-flag=-finstrument-functions',
                     '--linker-flag=' + os.path.join(wd.prevd, tracerobject),
@@ -94,7 +94,6 @@ baserepo = git.Repo('.')
 TRACEFILEEXT='.bchains'
 TRACEROBJBASE='tracerB'
 DISABLE_WARNINGS=['--compile-flag=-Wno-return-type', '--compile-flag=-Wno-implicit-fallthrough']
-CRLF = re.compile(r'( |\\|\r)*\n')
 
 with open('jerry_test_security.json', 'r') as database:
     for bug in json.load(database):
@@ -102,14 +101,21 @@ with open('jerry_test_security.json', 'r') as database:
         trg = os.path.join(os.path.abspath(os.getcwd()), 'bin', 'jerry-i' + num);
         title('i' + num)
         try:
-            make('../js-i' + num + '-bug', bug['rev_bug'], trg + '-bug', bug['bld_cmd'])
+            bld = './tools/build.py --debug'
+            if 'bld_cmd' in bug:
+                bld = bug['bld_cmd']
+            elif 'bld_typ' in bug:
+                bld = {
+                    'debug.linux' : './tools/build.py --clean --debug'
+                }.get(bug['bld_typ'], bld)
+            make('../js-i' + num + '-bug', bug['rev_bug'], trg + '-bug', bld)
             run(trg + '-bug', bug['testcase'])
         except Exception as e:
             print(str(e))
             with open('secissuesbuild.log', 'at') as logfile:
                 logfile.write("ERROR in reproducing issue %s (#%s)\n" % (num, bug['rev_bug']))
                 logfile.write(str(e))
-                logfile.write("--------\n")
+                logfile.write("\n--------\n")
         else:
             pass
         finally:
