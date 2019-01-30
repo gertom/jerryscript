@@ -26,6 +26,32 @@ class pushd:
 def title(str):
     print('\033]0;' + str, end='\007\n')
 
+def break_chains(args):
+    with tempfile.NamedTemporaryFile() as temp:
+        sp.run([
+                    'valgrind',
+                    '--callgrind-out-file=' + temp.name,
+                    '--tool=callgrind',
+                    '--quiet',
+                    '--separate-callers=1000', # FIXME: too high? too low?
+                    '--separate-recs=1000', # FIXME: too high? too low?
+                    '--skip-direct-rec=no',
+                ] + args, timeout=30)
+        with sp.Popen([
+                    'callgrind_annotate',
+                    '--threshold=100',
+                    temp.name,
+                ], stdout=sp.PIPE, universal_newlines=True) as callgrind_annotate:
+            out, _ = callgrind_annotate.communicate()
+    call_line_re = re.compile(r'\s*[0-9,.]+\s+\S+:(.+) \[')
+    with open('callgrind.txt', 'w') as tracefile:
+        tracefile.write('## START PROGRAM\n')
+        for line in out.splitlines():
+            line_match = call_line_re.match(line)
+            if line_match:
+                tracefile.write(LTOPRIVRE.sub('', '-->'.join(reversed(line_match.group(1).split("'"))))+'\n')
+        tracefile.write('## QUIT PROGRAM\n')
+
 def make(dirname, version, target, build_command):
     global baserepo;
     if os.path.exists(target):
@@ -41,7 +67,7 @@ def make(dirname, version, target, build_command):
         archive.close()
     if not os.path.isfile(os.path.join(dirname, 'tools', 'build.py')):
         if not os.path.isdir(os.path.join(dirname, 'tools')):
-            os.makedirs(os.path.join(dirname, 'tools'))
+            os.path.isdir(os.makedirs(dirname, 'tools'))
         sh.copyfile(os.path.join('tools', 'build.py'), os.path.join(dirname, 'tools', 'build.py'))
         sh.copyfile(os.path.join('tools', 'settings.py'), os.path.join(dirname, 'tools', 'settings.py'))
         #raise Exception('build.py does not exist in ' + dirname)
@@ -49,19 +75,10 @@ def make(dirname, version, target, build_command):
         dstdir = os.path.dirname(target)
         blddir = wd.currd + '-build'
         print(wd.currd)
-        if '--compile-flag=-m32' in build_command:
-            tracerobject = TRACEROBJBASE + '-m32.o'
-        else:
-            tracerobject = TRACEROBJBASE + '.o'
         command = ['/usr/bin/python3'] \
                 + build_command.split(' ') \
-                + ['--builddir=' + blddir,
-                    '--compile-flag=-finstrument-functions',
-                    '--linker-flag=' + os.path.join(wd.prevd, tracerobject),
-                    '--link-lib=-lm'] \
+                + ['--builddir=' + blddir] \
                 + DISABLE_WARNINGS
-        if '-fsanitize=address' not in build_command:
-            command += ['--linker-flag=-static']
         command = [ c for c in command if c ]
         sp.call(command)
         if not os.path.isfile(os.path.join(blddir, 'bin', 'jerry')):
@@ -73,7 +90,6 @@ def make(dirname, version, target, build_command):
         sh.rmtree(blddir)
 
 def run(jerry, testcase):
-    EtM='../elf-to-map.py'
     CtG='../chain-to-graph.py'
     CGF='../convert-graph-formats.py'
     jbname = os.path.basename(jerry)
@@ -82,32 +98,26 @@ def run(jerry, testcase):
         return
     if not os.path.exists(jerry):
         raise Exception('Executable file ' + jerry + ' does not exist.')
-    if os.path.exists('tracer' + TRACEFILEEXT):
-        os.remove('tracer' + TRACEFILEEXT)
     idx = 0
     with open('temp.js', 'w') as testscript:
         testscript.write(testcase)
-    sp.call([jerry, 'temp.js'])
-    sh.move('tracer' + TRACEFILEEXT, jbname + TRACEFILEEXT)
-    sp.call([CtG, '-b', '-m', '-g', jbname + TRACEFILEEXT])
-    sp.call([EtM, jerry, jbname + '.map'])
-    with tempfile.NamedTemporaryFile() as rmap, open(jbname + '.dynamic.map', 'w') as pmap:
-        pmap.write(LTOPRIVRE.sub('', rmap.read()))
-    sp.call([CGF, jbname + TRACEFILEEXT + '.all.graph.json', jbname + '.dynamic.graphml', '-m',  jbname + '.dynamic.map'])
+    break_chains([jerry, 'temp.js'])
+    sh.move('callgrind.txt', jbname + TRACEFILEEXT)
+    sp.call([CtG, '-m', '-g', jbname + TRACEFILEEXT])
+    sp.call([CGF, jbname + TRACEFILEEXT + '.all.graph.json', jbname + '.dynamic.graphml'])
     sp.call(['gzip', '-f', '-9', jbname + TRACEFILEEXT])
     sp.call(['gzip', '-f', '-9', jbname + TRACEFILEEXT + '.all.graph.json'])
     sp.call(['gzip', '-9', jbname + '.dynamic.graphml'])
 
 baserepo = git.Repo('.')
-TRACEFILEEXT='.bchains'
-TRACEROBJBASE='tracerB'
+TRACEFILEEXT='.cgt'
 DISABLE_WARNINGS=['--compile-flag=-Wno-return-type', '--compile-flag=-Wno-implicit-fallthrough']
 LTOPRIVRE=re.compile(r'\.lto_priv\.[0-9]+')
 
-with open('jerry_test_security.json', 'r') as database, open(datetime.datetime.now().strftime("build-%Y%m%d-%H%M%S.log"), 'at') as logfile:
+with open('jerry_test_security.json', 'r') as database, open(datetime.datetime.now().strftime("build-nt-%Y%m%d-%H%M%S.log"), 'at') as logfile:
     for bug in json.load(database):
         num = str(bug['issue'])
-        trg = os.path.join(os.path.abspath(os.getcwd()), 'bin', 'jerry-i' + num);
+        trg = os.path.join(os.path.abspath(os.getcwd()), 'bin', 'jerry-i' + num + 'nt');
         title('i' + num)
         try:
             bld = './tools/build.py --debug'
@@ -117,7 +127,7 @@ with open('jerry_test_security.json', 'r') as database, open(datetime.datetime.n
                 bld = {
                     'debug.linux' : './tools/build.py --clean --debug'
                 }.get(bug['bld_typ'], bld)
-            make('../js-i' + num + '-bug', bug['rev_bug'], trg + '-bug', bld)
+            make('../js-i' + num + 'nt-bug', bug['rev_bug'], trg + '-bug', bld)
             run(trg + '-bug', bug['testcase'])
         except Exception as e:
             print(str(e))

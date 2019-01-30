@@ -43,4 +43,7 @@ tests/test262/
 # Generated files for coverage
 *.gz
 *.map
+*.graphml
 tracer*.o
+build*.log
+jerry-*.txt
